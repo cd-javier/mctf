@@ -117,8 +117,7 @@ export const bioType = defineType({
             defineField({
               name: 'description',
               title: 'What this means for you',
-              type: 'array',
-              of: [{type: 'block'}],
+              type: 'text',
               validation: (rule) => rule.required(),
             }),
           ],

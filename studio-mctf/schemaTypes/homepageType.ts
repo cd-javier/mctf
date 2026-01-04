@@ -39,6 +39,11 @@ export const homepageType = defineType({
       title: 'Services',
       options: {collapsible: true, collapsed: false},
     },
+    {
+      name: 'trusted_by',
+      title: 'Trusted By',
+      options: {collapsible: true, collapsed: false},
+    },
   ],
 
   fields: [
@@ -72,6 +77,7 @@ export const homepageType = defineType({
       title: 'Image',
       description: 'dimensions',
       type: 'image',
+      options: {hotspot: true},
       fieldset: 'hero',
       validation: (rule) => rule.required(),
     }),
@@ -115,20 +121,11 @@ export const homepageType = defineType({
 
     // BIO SNIPPET
     defineField({
-      name: 'bio_heading',
-      title: 'Bio Heading',
-      description: 'length',
-      type: 'string',
-      fieldset: 'bio',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: 'bio_snippet',
       title: 'Snippet',
       description: 'length',
-      type: 'array',
+      type: 'text',
       fieldset: 'bio',
-      of: [{type: 'block'}],
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -143,6 +140,7 @@ export const homepageType = defineType({
       name: 'bio_image',
       description: 'dimensions',
       type: 'image',
+      options: {hotspot: true},
       fieldset: 'bio',
       validation: (rule) => rule.required(),
     }),
@@ -191,6 +189,14 @@ export const homepageType = defineType({
 
     // COLLABORATIONS
     defineField({
+      name: 'collab_heading',
+      title: 'Heading',
+      description: 'length',
+      type: 'string',
+      fieldset: 'collabs',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'collaborations',
       title: 'Collaborations',
       type: 'array',
@@ -230,7 +236,7 @@ export const homepageType = defineType({
                   {title: 'YouTube', value: 'youtube'},
                   {title: 'Instagram', value: 'instagram'},
                 ],
-                layout: 'radio', // or 'dropdown'
+                layout: 'dropdown',
               },
               validation: (rule) => rule.required(),
             }),
@@ -252,7 +258,7 @@ export const homepageType = defineType({
       title: 'Services',
       type: 'array',
       fieldset: 'services',
-      validation: (rule) => rule.length(3).error('You must provide exactly 3 services.'),
+      validation: (rule) => rule.min(3).max(3).error('You must have exactly 3 services'),
       of: [
         {
           type: 'object',
@@ -293,6 +299,22 @@ export const homepageType = defineType({
           },
         },
       ],
+    }),
+
+    // TRUSTED BY
+    defineField({
+      name: 'show_trusted_by',
+      type: 'boolean',
+      fieldset: 'trusted_by',
+    }),
+    defineField({
+      name: 'trusted_by',
+      title: 'Trusted By',
+      type: 'reference',
+      fieldset: 'trusted_by',
+      to: {type: 'trusted_by'},
+      readOnly: true,
+      hidden: ({parent}) => !parent?.show_trusted_by,
     }),
   ],
 
