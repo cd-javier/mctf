@@ -1,3 +1,5 @@
+import { useLoaderData } from 'react-router-dom';
+
 export default function Root() {
-  return <h1>Home</h1>;
+  return <div>Home</div>;
 }
