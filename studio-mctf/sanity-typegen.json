@@ -1,0 +1,5 @@
+{
+  "path": "../src/lib/loaders.ts",
+  "schema": "schema.json",
+  "generates": "../src/lib/sanity.types.ts"
+}
