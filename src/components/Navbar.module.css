@@ -1,0 +1,103 @@
+.navbar {
+  z-index: 1;
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-headings);
+  font-weight: bold;
+  color: var(--accent-main);
+  text-decoration: none;
+  font-size: 1.75rem;
+}
+
+.navbar .navToggle svg {
+  display: block;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar nav a:hover {
+  text-decoration: underline;
+}
+
+.navbar nav svg {
+  fill: var(--text-main);
+  height: 40px;
+  width: auto;
+}
+
+.navLinks {
+  --bg: var(--text-main);
+  --text: var(--bg-main);
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  min-width: 80%;
+  top: 72px;
+  right: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+.navLinks.open {
+  display: flex;
+}
+
+.navLinks li {
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 1rem;
+  text-align: right;
+}
+
+.navLinks .active {
+  text-decoration: underline;
+}
+
+.navLinks li svg {
+  fill: var(--text);
+}
+
+@media (min-width: 768px) {
+  .navToggle {
+    display: none;
+  }
+
+  .navLinks {
+    --text: var(--text-main);
+    --bg: none;
+    display: flex;
+    flex-direction: row;
+    position: inherit;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .navLinks li {
+    padding: 0;
+  }
+}
+
+/* Small laptops (1024px and up) */
+@media (min-width: 1024px) {
+}
+
+/* Desktop (1280px and up) */
+@media (min-width: 1280px) {
+}
