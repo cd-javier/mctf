@@ -10,11 +10,12 @@
 
   /* Accents */
   --accent-main: #d7ab54;
+  --accent-wbh: #bb461b;
 
   /* Fonts */
   --font-headings: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont,
     sans-serif;
-  --font-body: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont,
+  --font-body: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont,
     sans-serif;
 }
 
@@ -65,4 +66,15 @@ p {
 
 .large-body {
   font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+}
+
+/* Small laptops (1024px and up) */
+@media (min-width: 1024px) {
+}
+
+/* Desktop (1280px and up) */
+@media (min-width: 1280px) {
 }
