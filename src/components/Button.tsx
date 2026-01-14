@@ -21,21 +21,36 @@ export default function Button({
 }: ButtonProps) {
   if (href)
     return (
-      <a href={href} className={classNames(styles.button, styles[color])}>
+      <a
+        href={href}
+        className={classNames(styles.button, styles[color])}
+        role="button"
+        tabIndex={0}
+      >
         {children}
       </a>
     );
 
   if (to) {
     return (
-      <NavLink to={to} className={classNames(styles.button, styles[color])}>
+      <NavLink
+        to={to}
+        className={classNames(styles.button, styles[color])}
+        role="button"
+        tabIndex={0}
+      >
         {children}
       </NavLink>
     );
   }
 
   return (
-    <div className={classNames(styles.button, styles[color])} onClick={onClick}>
+    <div
+      className={classNames(styles.button, styles[color])}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+    >
       {children}
     </div>
   );
