@@ -13,10 +13,10 @@
   --accent-wbh: #bb461b;
 
   /* Fonts */
-  --font-headings: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  --font-body: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  --font-headings:
+    'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:
+    'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -66,6 +66,10 @@ p {
 
 .large-body {
   font-size: 1.25rem;
+}
+
+.multiline {
+  white-space: pre-line;
 }
 
 @media (min-width: 768px) {

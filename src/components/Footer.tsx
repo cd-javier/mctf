@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import Icon from './SocialIcon';
+import SocialLinks from './SocialLinks';
 
 import styles from './Footer.module.css';
 
@@ -8,42 +8,9 @@ export default function Footer() {
   return (
     <footer className={styles.footerWrapper}>
       <div className={styles.footer}>
-        <div>
+        <div className={styles.footerInfo}>
           <div className={styles.logo}>MatthewCTFuller</div>
-          <nav className={styles.socialLinks}>
-            <ul>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/matthewctfuller"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Matthew CT Fuller on Linkedin (opens in a new tab)"
-                >
-                  <Icon.LinkedIn />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/matthewctfuller"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Matthew CT Fuller on Instagram (opens in a new tab)"
-                >
-                  <Icon.Instagram />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.tiktok.com/@matthewctfuller"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Matthew CT Fuller on Instagram (opens in a new tab)"
-                >
-                  <Icon.TikTok />
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <SocialLinks />
           <a href="mailto:info@MatthewCTFuller.com">info@MatthewCTFuller.com</a>
         </div>
         <nav className={styles.links}>

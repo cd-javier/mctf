@@ -1,6 +1,6 @@
 .footerWrapper {
   width: 100%;
-  padding: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   background-color: var(--text-main);
   color: var(--bg-main);
 }
@@ -25,6 +25,12 @@
   text-decoration: underline;
 }
 
+.footerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .logo {
   font-family: var(--font-headings);
   font-size: 1.25rem;
@@ -42,18 +48,11 @@
   margin: 0;
 }
 
-.socialLinks ul {
-  margin: 1.5rem 0;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.socialLinks svg {
+.footer svg {
   fill: var(--bg-main);
-  cursor: pointer;
 }
 
-.socialLinks svg:hover {
+.footer svg:hover {
   fill: var(--accent-main);
 }
 
@@ -73,12 +72,11 @@
 
     text-align: left;
   }
-
-  .socialLinks ul {
-    margin: 0.5rem 0;
-    justify-content: left;
+  .footerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-
   .disclaimer {
     grid-column: span 2;
     text-align: center;

@@ -66,9 +66,9 @@
   text-align: right;
 }
 
-.navLinks .active {
+/* .navLinks .active {
   text-decoration: underline;
-}
+} */
 
 .navLinks li svg {
   fill: var(--text);

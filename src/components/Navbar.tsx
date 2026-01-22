@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import classNames from 'classnames';
+import { HashLink } from 'react-router-hash-link';
 
 import WBHLogo from './WBHLogo';
 
@@ -44,7 +45,9 @@ export default function Navbar() {
             <NavLink to={''}>Services</NavLink>
           </li>
           <li>
-            <NavLink to={''}>Get in touch</NavLink>
+            <HashLink smooth to={'/#contact'}>
+              Get in touch
+            </HashLink>
           </li>
           {showWBH && (
             <li>
