@@ -40,6 +40,11 @@ export const homepageType = defineType({
       options: {collapsible: true, collapsed: false},
     },
     {
+      name: 'contact',
+      title: 'Contact',
+      options: {collapsible: true, collapsed: false},
+    },
+    {
       name: 'trusted_by',
       title: 'Trusted By',
       options: {collapsible: true, collapsed: false},
@@ -52,7 +57,7 @@ export const homepageType = defineType({
       name: 'hero_heading',
       title: 'Heading',
       description: 'length',
-      type: 'string',
+      type: 'text',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
     }),
@@ -60,7 +65,7 @@ export const homepageType = defineType({
       name: 'hero_subheading',
       title: 'Subheading',
       description: 'length',
-      type: 'string',
+      type: 'text',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
     }),
@@ -92,7 +97,7 @@ export const homepageType = defineType({
       name: 'WBH_subheading',
       title: 'Subheading',
       description: 'length',
-      type: 'string',
+      type: 'text',
       fieldset: 'wbh',
       hidden: ({parent}) => !parent?.show_WBH_hero,
       validation: (rule) =>
@@ -220,11 +225,16 @@ export const homepageType = defineType({
               validation: (rule) => rule.required(),
             }),
             defineField({
+              name: 'url',
+              title: 'Url',
+              type: 'url',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
               name: 'image',
               title: 'Image',
               type: 'image',
               options: {hotspot: true},
-              validation: (rule) => rule.required(),
             }),
             defineField({
               name: 'platform',
@@ -238,7 +248,6 @@ export const homepageType = defineType({
                 ],
                 layout: 'dropdown',
               },
-              validation: (rule) => rule.required(),
             }),
           ],
           preview: {
@@ -299,6 +308,49 @@ export const homepageType = defineType({
           },
         },
       ],
+    }),
+
+    //CONTACT
+    defineField({
+      name: 'contact_heading',
+      title: 'Heading',
+      type: 'string',
+      fieldset: 'contact',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'contact_body',
+      title: 'Body of text',
+      type: 'text',
+      fieldset: 'contact',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'contact_cta_text',
+      title: 'CTA Text',
+      type: 'string',
+      fieldset: 'contact',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'contact_cta_link',
+      title: 'CTA Link',
+      type: 'url',
+      fieldset: 'contact',
+      validation: (rule) =>
+        rule.required().uri({
+          scheme: ['http', 'https', 'mailto'],
+          allowRelative: true,
+        }),
+    }),
+    defineField({
+      name: 'contact_image',
+      title: 'Image',
+      description: 'dimensions',
+      type: 'image',
+      options: {hotspot: true},
+      fieldset: 'hero',
+      validation: (rule) => rule.required(),
     }),
 
     // TRUSTED BY
