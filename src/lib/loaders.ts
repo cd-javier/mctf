@@ -8,13 +8,15 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
       "heading": hero_heading,
       "subheading": hero_subheading,
       "imageUrl": hero_image.asset->url,
-      "cta": hero_cta
+      "cta": hero_cta,
+      "ctaUrl": hero_cta_link
     },
 
     "wbh": {
       "show": show_WBH_hero,
       "subheading": WBH_subheading,
-      "cta": WBH_CTA
+      "cta": WBH_CTA,
+      "ctaUrl": WBH_CTA_link
     },
 
     "bio": {
@@ -41,6 +43,7 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
       title,
       body,
       cta,
+      "ctaUrl": cta_link,
       "imageUrl": image.asset->url
     },
 

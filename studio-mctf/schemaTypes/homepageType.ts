@@ -71,8 +71,15 @@ export const homepageType = defineType({
     }),
     defineField({
       name: 'hero_cta',
-      title: 'Call To Action',
-      description: 'The button will link to the services page',
+      title: 'Call to Action',
+      type: 'string',
+      fieldset: 'hero',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'hero_cta_link',
+      title: 'Call to Action Link',
+      description: 'Local path, for example "/services"',
       type: 'string',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
@@ -110,9 +117,22 @@ export const homepageType = defineType({
     }),
     defineField({
       name: 'WBH_CTA',
-      title: 'Call To Action',
-      description: 'The button will link to the WBH website',
+      title: 'Call to Action',
       type: 'string',
+      fieldset: 'wbh',
+      hidden: ({parent}) => !parent?.show_WBH_hero,
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          if (context.parent?.show_WBH_hero && !value) {
+            return 'Required when WBH Hero is enabled'
+          }
+          return true
+        }),
+    }),
+    defineField({
+      name: 'WBH_CTA_link',
+      title: 'Call to Action Link',
+      type: 'url',
       fieldset: 'wbh',
       hidden: ({parent}) => !parent?.show_WBH_hero,
       validation: (rule) =>
@@ -135,7 +155,7 @@ export const homepageType = defineType({
     }),
     defineField({
       name: 'bio_CTA',
-      title: 'Call To Action',
+      title: 'Call to Action',
       description: 'The button wil link to the "About me" page',
       type: 'string',
       fieldset: 'bio',
@@ -186,6 +206,62 @@ export const homepageType = defineType({
                 title,
                 subtitle: subtitle?.slice(0, 60) + (subtitle?.length > 60 ? '…' : ''),
               }
+            },
+          },
+        },
+      ],
+    }),
+
+    // SERVICES
+    defineField({
+      name: 'services',
+      title: 'Services',
+      type: 'array',
+      fieldset: 'services',
+      validation: (rule) => rule.min(3).max(3).error('You must have exactly 3 services'),
+      of: [
+        {
+          type: 'object',
+          name: 'service',
+          title: 'Service',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'body',
+              title: 'Body',
+              type: 'text',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'cta',
+              title: 'Call to Action',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'cta_link',
+              title: 'Call to Action Link',
+              description: 'Local path, for example "/services#coaching"',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {hotspot: true},
+              validation: (rule) => rule.required(),
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              media: 'image',
             },
           },
         },
@@ -261,55 +337,6 @@ export const homepageType = defineType({
       ],
     }),
 
-    // SERVICES
-    defineField({
-      name: 'services',
-      title: 'Services',
-      type: 'array',
-      fieldset: 'services',
-      validation: (rule) => rule.min(3).max(3).error('You must have exactly 3 services'),
-      of: [
-        {
-          type: 'object',
-          name: 'service',
-          title: 'Service',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'body',
-              title: 'Body',
-              type: 'text',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'cta',
-              title: 'CTA',
-              type: 'string',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-              options: {hotspot: true},
-              validation: (rule) => rule.required(),
-            }),
-          ],
-          preview: {
-            select: {
-              title: 'title',
-              media: 'image',
-            },
-          },
-        },
-      ],
-    }),
-
     //CONTACT
     defineField({
       name: 'contact_heading',
@@ -327,14 +354,14 @@ export const homepageType = defineType({
     }),
     defineField({
       name: 'contact_cta_text',
-      title: 'CTA Text',
+      title: 'Call to Action Text',
       type: 'string',
       fieldset: 'contact',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'contact_cta_link',
-      title: 'CTA Link',
+      title: 'Call to Action Link',
       type: 'url',
       fieldset: 'contact',
       validation: (rule) =>

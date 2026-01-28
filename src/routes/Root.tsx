@@ -75,7 +75,7 @@ function Hero({ data }: { data: HeroData }) {
       <div className={classNames(styles.subheading, 'multiline')}>
         {data.subheading}
       </div>
-      <Button to="/services">{data.cta}</Button>
+      <Button to={data.ctaUrl!}>{data.cta}</Button>
     </Section>
   );
 }
@@ -91,7 +91,9 @@ function WBH({ data }: { data: WBHData }) {
       <div className={classNames(styles.subheading, 'multiline')}>
         {data.subheading}
       </div>
-      <Button color="wbh">{data.cta}</Button>
+      <Button color="wbh" href={data.ctaUrl!}>
+        {data.cta}
+      </Button>
     </Section>
   );
 }
@@ -115,7 +117,7 @@ function Bio({ data }: { data: BioData }) {
       )}
       <div className={styles.bioSnippet}>
         <p className="multiline">{data.snippet}</p>
-        <Button>{data.cta}</Button>
+        <Button to="/about">{data.cta}</Button>
       </div>
     </Section>
   );
@@ -270,7 +272,7 @@ function Services({ data }: { data: ServicesData }) {
                 {' '}
                 <h3>{service.title}</h3>
                 <p className="multiline">{service.body}</p>
-                <Button to="/services">{service.cta}</Button>
+                <Button to={service.ctaUrl!}>{service.cta}</Button>
               </div>
             </div>
           );
