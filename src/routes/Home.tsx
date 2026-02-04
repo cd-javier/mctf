@@ -282,7 +282,7 @@ function Services({ data }: { data: ServicesData }) {
   );
 }
 
-export function TrustedBy({ data }: { data: TrustedByData }) {
+function TrustedBy({ data }: { data: TrustedByData }) {
   if (!data.companies || data.companies.length < 1) return;
 
   return (

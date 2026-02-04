@@ -19,3 +19,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.flex h2 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
