@@ -9,7 +9,7 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import Section from '../layouts/Section';
 
 import type { BIO_QUERY_RESULT } from '../lib/sanity.types';
-import { useState, type MouseEventHandler } from 'react';
+import { useState } from 'react';
 
 type BioData = NonNullable<BIO_QUERY_RESULT>;
 type HeroData = BioData['hero'];
