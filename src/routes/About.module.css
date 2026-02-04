@@ -72,6 +72,7 @@ h2 {
 .certsAccordion {
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 800px;
 }
 
@@ -86,6 +87,7 @@ h2 {
 .certificate .heading {
   padding: 1rem 0;
   display: flex;
+  gap: 1rem;
   align-items: center;
 }
 
