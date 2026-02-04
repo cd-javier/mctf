@@ -37,7 +37,7 @@ export default function About() {
   );
 }
 
-function Hero({ data }: { data: HeroData }) {
+export function Hero({ data }: { data: HeroData }) {
   return (
     <Section
       wrapperClassName={styles.heroWrapper}

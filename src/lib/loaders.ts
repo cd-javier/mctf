@@ -91,7 +91,8 @@ const BIO_QUERY = defineQuery(`*[_type == "bio"][0] {
 const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
     "hero": {
       heading,
-      subheading
+      subheading,
+      "imageUrl": hero_image.asset->url
     },
 
     services[]{

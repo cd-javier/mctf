@@ -1,0 +1,11 @@
+.serviceSection img {
+    max-width: 100%;
+}
+
+.serviceSection .body {
+    max-width: 800px;
+}
+
+.trustedByWrapper {
+    background-color: var(--text-main);
+}

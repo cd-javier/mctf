@@ -80,6 +80,13 @@ export type Services = {
   _rev: string;
   heading?: string;
   subheading?: string;
+  hero_image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   services?: Array<{
     title?: string;
     image?: {
@@ -439,12 +446,6 @@ export type AllSanitySchemaTypes =
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
-type ArrayOf<T> = Array<
-  T & {
-    _key: string;
-  }
->;
-
 // Source: ../src/lib/loaders.ts
 // Variable: HOMEPAGE_QUERY
 // Query: *[_type == "homepage"][0] {    "hero": {      "heading": hero_heading,      "subheading": hero_subheading,      "imageUrl": hero_image.asset->url,      "cta": hero_cta,      "ctaUrl": hero_cta_link    },    "wbh": {      "show": show_WBH_hero,      "subheading": WBH_subheading,      "cta": WBH_CTA,      "ctaUrl": WBH_CTA_link    },    "bio": {      "snippet": bio_snippet,      "cta": bio_CTA,      "imageUrl": bio_image.asset->url    },    "testimonials": testimonials[]{quote, person},    "collabs": {      "heading": collab_heading,        "collaborations": collaborations[]{        title,        subtitle,        url,        "imageUrl": image.asset->url,        platform      }    },    "services": services[]{      title,      body,      cta,      "ctaUrl": cta_link,      "imageUrl": image.asset->url    },    "contact": {      "heading": contact_heading,      "body": contact_body,      "cta": contact_cta_text,      "ctaUrl": contact_cta_link,      "imageUrl": contact_image.asset->url    },    "trustedBy": {      "show": show_trusted_by,      "companies": trusted_by->companies[]{        name,        "logoUrl": image.asset->url      }    }  }
@@ -600,11 +601,12 @@ export type BIO_QUERY_RESULT = {
 
 // Source: ../src/lib/loaders.ts
 // Variable: SERVICES_QUERY
-// Query: *[_type == "services"][0] {    "hero": {      heading,      subheading    },    services[]{      title,      body,      "imageUrl": image.asset->url    },    "trustedBy": {      "show": show_trusted_by,      "companies": trusted_by->companies[]{        name,        "logoUrl": image.asset->url      }    }  }
+// Query: *[_type == "services"][0] {    "hero": {      heading,      subheading,      "imageUrl": hero_image.asset->url    },    services[]{      title,      body,      "imageUrl": image.asset->url    },    "trustedBy": {      "show": show_trusted_by,      "companies": trusted_by->companies[]{        name,        "logoUrl": image.asset->url      }    }  }
 export type SERVICES_QUERY_RESULT = {
   hero: {
     heading: string | null;
     subheading: string | null;
+    imageUrl: string | null;
   };
   services: Array<{
     title: string | null;
@@ -659,7 +661,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "homepage"][0] {\n    "hero": {\n      "heading": hero_heading,\n      "subheading": hero_subheading,\n      "imageUrl": hero_image.asset->url,\n      "cta": hero_cta,\n      "ctaUrl": hero_cta_link\n    },\n\n    "wbh": {\n      "show": show_WBH_hero,\n      "subheading": WBH_subheading,\n      "cta": WBH_CTA,\n      "ctaUrl": WBH_CTA_link\n    },\n\n    "bio": {\n      "snippet": bio_snippet,\n      "cta": bio_CTA,\n      "imageUrl": bio_image.asset->url\n    },\n\n    "testimonials": testimonials[]{quote, person},\n\n    "collabs": {\n      "heading": collab_heading,\n  \n      "collaborations": collaborations[]{\n        title,\n        subtitle,\n        url,\n        "imageUrl": image.asset->url,\n        platform\n      }\n    },\n\n    "services": services[]{\n      title,\n      body,\n      cta,\n      "ctaUrl": cta_link,\n      "imageUrl": image.asset->url\n    },\n\n    "contact": {\n      "heading": contact_heading,\n      "body": contact_body,\n      "cta": contact_cta_text,\n      "ctaUrl": contact_cta_link,\n      "imageUrl": contact_image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "bio"][0] {\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    letter,\n\n    quote,\n\n    "proBio": {\n      "heading": bio_heading,\n      "body": pro_bio\n    },\n\n    "certs": {\n      "heading": certs_heading,\n      "preText": certs_pre,\n      certifications[]{title, description},\n      "postText": certs_post\n    }\n  }': BIO_QUERY_RESULT;
-    '*[_type == "services"][0] {\n    "hero": {\n      heading,\n      subheading\n    },\n\n    services[]{\n      title,\n      body,\n      "imageUrl": image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    }\n  }': SERVICES_QUERY_RESULT;
+    '*[_type == "services"][0] {\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    services[]{\n      title,\n      body,\n      "imageUrl": image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    }\n  }': SERVICES_QUERY_RESULT;
     '*[_type == "links"][0] {\n    "social": social_links[]{\n      platform,\n      url\n    },\n\n    "other": other_links[]{\n      title,\n      description,\n      url,\n      "imageUrl": image.asset->url\n    }\n  }': LINKS_QUERY_RESULT;
   }
 }

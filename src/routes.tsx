@@ -3,6 +3,7 @@ import type { RouteObject } from 'react-router-dom';
 import RootLayout from './routes/RootLayout';
 import Home from './routes/Home';
 import About from './routes/About';
+import Services from './routes/Services';
 import {
   homepageLoader,
   bioLoader,
@@ -16,7 +17,7 @@ const routes: RouteObject[] = [
     children: [
       { path: '/', element: <Home />, loader: homepageLoader },
       { path: '/about', element: <About />, loader: bioLoader },
-      { path: '/services', loader: servicesLoader },
+      { path: '/services', element: <Services />, loader: servicesLoader },
       { path: '/links', loader: linksLoader },
     ],
   },
