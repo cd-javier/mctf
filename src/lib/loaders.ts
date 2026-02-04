@@ -154,7 +154,7 @@ export async function bioLoader() {
 
   if (cache.has(cacheKey)) {
     console.log('[cache hit]', cacheKey);
-    return cacheKey;
+    return cache.get(cacheKey);
   }
 
   try {
@@ -177,7 +177,7 @@ export async function servicesLoader() {
 
   if (cache.has(cacheKey)) {
     console.log('[cache hit]', cacheKey);
-    return cacheKey;
+    return cache.get(cacheKey);
   }
 
   try {
@@ -200,7 +200,7 @@ export async function linksLoader() {
 
   if (cache.has(cacheKey)) {
     console.log('[cache hit]', cacheKey);
-    return cacheKey;
+    return cache.get(cacheKey);
   }
 
   try {
