@@ -44,6 +44,15 @@ export const bioType = defineType({
       fieldset: 'hero',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'hero_image',
+      title: 'Image',
+      description: 'dimensions',
+      type: 'image',
+      options: {hotspot: true},
+      fieldset: 'hero',
+      validation: (rule) => rule.required(),
+    }),
 
     // LETTER
     defineField({

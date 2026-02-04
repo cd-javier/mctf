@@ -67,7 +67,8 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
 const BIO_QUERY = defineQuery(`*[_type == "bio"][0] {
     "hero": {
       heading,
-      subheading
+      subheading,
+      "imageUrl": hero_image.asset->url
     },
 
     letter,

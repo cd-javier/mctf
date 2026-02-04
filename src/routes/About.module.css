@@ -1,0 +1,139 @@
+h2 {
+  text-align: center;
+  margin: 0;
+  /* margin-bottom: 1rem; */
+}
+
+/* -------------------
+------- HERO ---------
+------------------- */
+.heroWrapper {
+  position: relative;
+}
+
+.heroSection {
+  min-height: 300px;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.heroSection .heading {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.heroSection .subheading {
+  margin: 0;
+  padding: 0;
+}
+
+.heroBg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+
+  background-position: center;
+  background-size: cover;
+}
+
+/* -------------------
+------- LETTER -------
+------------------- */
+.letterSection {
+  max-width: 600px;
+  font-style: italic;
+}
+
+/* -------------------
+------- QUOTE -------
+------------------- */
+.quoteWrapper {
+  background-color: var(--text-main);
+  color: var(--bg-main);
+  text-align: center;
+  font-style: italic;
+}
+
+/* -------------------
+------- TEXT ---------
+------------------- */
+.textBody {
+  max-width: 800px;
+}
+
+/* -------------------
+------- CERTS --------
+------------------- */
+
+.certsAccordion {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+.certificate {
+  border-top: 1px solid var(--text-main);
+}
+
+.certificate:last-of-type {
+  border-bottom: 1px solid var(--text-main);
+}
+
+.certificate .heading {
+  padding: 1rem 0;
+  display: flex;
+}
+
+.certificate h3 {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--accent-main);
+}
+
+.certificate svg {
+  height: 1.5rem;
+  fill: var(--accent-main);
+}
+
+.certificate .description {
+  padding-bottom: 1.5rem;
+  line-height: 150%;
+}
+
+/* -------------------
+----- RESPONSIVE -----
+------------------- */
+@media (min-width: 768px) {
+  .heroSection {
+    min-height: 400px;
+  }
+  .heroSection .heading {
+    font-size: 2rem;
+  }
+  .wbhSection .subheading {
+    font-size: 1.25rem;
+  }
+
+  .bioSection img,
+  .contactSection img {
+    max-width: 600px;
+  }
+
+  .testimonialsSection {
+    gap: 3rem !important;
+  }
+}
+
+/* Small laptops (1024px and up) */
+@media (min-width: 1024px) {
+}
+
+/* Desktop (1280px and up) */
+@media (min-width: 1280px) {
+}
