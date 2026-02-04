@@ -39,10 +39,10 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to={''}>About</NavLink>
+            <NavLink to={'/about'}>About</NavLink>
           </li>
           <li>
-            <NavLink to={''}>Services</NavLink>
+            <NavLink to={'/services'}>Services</NavLink>
           </li>
           <li>
             <HashLink smooth to={'/#contact'}>
