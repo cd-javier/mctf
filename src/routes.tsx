@@ -1,6 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 
-import Root from './routes/Root';
+import RootLayout from './routes/RootLayout';
+import Home from './routes/Home';
 import About from './routes/About';
 import {
   homepageLoader,
@@ -10,10 +11,15 @@ import {
 } from './lib/loaders';
 
 const routes: RouteObject[] = [
-  { path: '/', element: <Root />, loader: homepageLoader },
-  { path: '/about', element: <About />, loader: bioLoader },
-  { path: '/services', loader: servicesLoader },
-  { path: '/links', loader: linksLoader },
+  {
+    element: <RootLayout />,
+    children: [
+      { path: '/', element: <Home />, loader: homepageLoader },
+      { path: '/about', element: <About />, loader: bioLoader },
+      { path: '/services', loader: servicesLoader },
+      { path: '/links', loader: linksLoader },
+    ],
+  },
 ];
 
 export default routes;

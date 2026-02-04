@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import styles from './Root.module.css';
+import styles from './Home.module.css';
 
 import type { HOMEPAGE_QUERY_RESULT } from '../lib/sanity.types';
 import { imgUrl } from '../lib/imgUrl';
@@ -27,7 +27,7 @@ type ServicesData = HomepageData['services'];
 type ContactData = HomepageData['contact'];
 type TrustedByData = HomepageData['trustedBy'];
 
-export default function Root() {
+export default function Home() {
   const data = useLoaderData<HomepageData>();
 
   const {
@@ -282,7 +282,7 @@ function Services({ data }: { data: ServicesData }) {
   );
 }
 
-function TrustedBy({ data }: { data: TrustedByData }) {
+export function TrustedBy({ data }: { data: TrustedByData }) {
   if (!data.companies || data.companies.length < 1) return;
 
   return (
