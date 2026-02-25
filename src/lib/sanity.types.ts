@@ -26,6 +26,13 @@ export type Links = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  profile_photo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   social_links?: Array<{
     enabled?: boolean;
     url?: string;
@@ -641,15 +648,11 @@ export type SERVICES_QUERY_RESULT = {
 
 // Source: ../src/lib/loaders.ts
 // Variable: LINKS_QUERY
-// Query: *[_type == "links"][0] {    "social": social_links[]{      platform,      url    },    "other": other_links[]{      title,      description,      url,      "imageUrl": image.asset->url    }  }
+// Query: *[_type == "links"][0] {    "profilePhoto": profile_photo.asset->url,    "links": other_links[]{      title,      url,      "imageUrl": image.asset->url    }  }
 export type LINKS_QUERY_RESULT = {
-  social: Array<{
-    platform: "instagram" | "linkedin" | "tiktok" | "youtube" | null;
-    url: string | null;
-  }> | null;
-  other: Array<{
+  profilePhoto: string | null;
+  links: Array<{
     title: string | null;
-    description: string | null;
     url: string | null;
     imageUrl: string | null;
   }> | null;
@@ -662,6 +665,6 @@ declare module "@sanity/client" {
     '*[_type == "homepage"][0] {\n    "hero": {\n      "heading": hero_heading,\n      "subheading": hero_subheading,\n      "imageUrl": hero_image.asset->url,\n      "cta": hero_cta,\n      "ctaUrl": hero_cta_link\n    },\n\n    "wbh": {\n      "show": show_WBH_hero,\n      "subheading": WBH_subheading,\n      "cta": WBH_CTA,\n      "ctaUrl": WBH_CTA_link\n    },\n\n    "bio": {\n      "snippet": bio_snippet,\n      "cta": bio_CTA,\n      "imageUrl": bio_image.asset->url\n    },\n\n    "testimonials": testimonials[]{quote, person},\n\n    "collabs": {\n      "heading": collab_heading,\n  \n      "collaborations": collaborations[]{\n        title,\n        subtitle,\n        url,\n        "imageUrl": image.asset->url,\n        platform\n      }\n    },\n\n    "services": services[]{\n      title,\n      body,\n      cta,\n      "ctaUrl": cta_link,\n      "imageUrl": image.asset->url\n    },\n\n    "contact": {\n      "heading": contact_heading,\n      "body": contact_body,\n      "cta": contact_cta_text,\n      "ctaUrl": contact_cta_link,\n      "imageUrl": contact_image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "bio"][0] {\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    letter,\n\n    quote,\n\n    "proBio": {\n      "heading": bio_heading,\n      "body": pro_bio\n    },\n\n    "certs": {\n      "heading": certs_heading,\n      "preText": certs_pre,\n      certifications[]{title, description},\n      "postText": certs_post\n    }\n  }': BIO_QUERY_RESULT;
     '*[_type == "services"][0] {\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    services[]{\n      title,\n      body,\n      "imageUrl": image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    }\n  }': SERVICES_QUERY_RESULT;
-    '*[_type == "links"][0] {\n    "social": social_links[]{\n      platform,\n      url\n    },\n\n    "other": other_links[]{\n      title,\n      description,\n      url,\n      "imageUrl": image.asset->url\n    }\n  }': LINKS_QUERY_RESULT;
+    '*[_type == "links"][0] {\n    "profilePhoto": profile_photo.asset->url,\n\n    "links": other_links[]{\n      title,\n      url,\n      "imageUrl": image.asset->url\n    }\n  }': LINKS_QUERY_RESULT;
   }
 }

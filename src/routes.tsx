@@ -4,6 +4,7 @@ import RootLayout from './routes/RootLayout';
 import Home from './routes/Home';
 import About from './routes/About';
 import Services from './routes/Services';
+import Links from './routes/Links';
 import {
   homepageLoader,
   bioLoader,
@@ -18,7 +19,7 @@ const routes: RouteObject[] = [
       { path: '/', element: <Home />, loader: homepageLoader },
       { path: '/about', element: <About />, loader: bioLoader },
       { path: '/services', element: <Services />, loader: servicesLoader },
-      { path: '/links', loader: linksLoader },
+      { path: '/links', element: <Links />, loader: linksLoader },
     ],
   },
 ];

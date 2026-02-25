@@ -111,14 +111,10 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
   }`);
 
 const LINKS_QUERY = defineQuery(`*[_type == "links"][0] {
-    "social": social_links[]{
-      platform,
-      url
-    },
+    "profilePhoto": profile_photo.asset->url,
 
-    "other": other_links[]{
+    "links": other_links[]{
       title,
-      description,
       url,
       "imageUrl": image.asset->url
     }
