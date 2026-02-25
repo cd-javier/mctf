@@ -10,6 +10,7 @@ import Section from '../layouts/Section';
 import type { SERVICES_QUERY_RESULT } from '../lib/sanity.types';
 import { Hero } from './About';
 import TrustedByGrid from '../components/TrustedByGrid';
+import Button from '../components/Button';
 
 type ServicesPageData = NonNullable<SERVICES_QUERY_RESULT>;
 // type HeroData = ServicesPageData['hero'];
@@ -46,7 +47,11 @@ function ServicesSection({ data }: { data: ServicesData }) {
       >
         <h2>{service.title}</h2>
         <img
-          src={imgUrl(service.imageUrl!).width(1800).height(300).url()}
+          src={imgUrl(service.imageUrl!)
+            .width(1800)
+            .height(300)
+            .format('webp')
+            .url()}
           alt=""
         />
         <div className={styles.body}>
@@ -80,6 +85,8 @@ function CTA() {
       flex
     >
       <h2>Let's work together</h2>
+      <p>Ready to make take the leap?</p>
+    <Button to='/#contact'>Get in touch</Button>
     </Section>
   );
 }

@@ -48,7 +48,7 @@ export function Hero({ data }: { data: HeroData }) {
       <div
         className={styles.heroBg}
         style={{
-          backgroundImage: `url(${imgUrl(data.imageUrl!).url()})`,
+          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').url()})`,
         }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
