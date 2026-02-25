@@ -33,8 +33,14 @@ export default function Footer() {
           </ul>
         </nav>
         <div className={styles.disclaimer}>
-          @ 2026 MatthewCTFuller | Website by{' '}
-          <a href="http://www.javierquiroga.com">Javier Quiroga</a>
+          @ 2026 MatthewCTFuller - Website by{' '}
+          <a
+            href="http://www.javierquiroga.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Javier Quiroga
+          </a>
         </div>
       </div>
     </footer>
