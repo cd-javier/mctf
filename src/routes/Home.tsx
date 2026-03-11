@@ -306,9 +306,9 @@ function Contact({ data }: { data: ContactData }) {
     <Section
       wrapperClassName={styles.contactWrapper}
       className={styles.contactSection}
+      anchor='contact'
       flex
     >
-      <Anchor id="contact" />
       <h2>{data.heading}</h2>
       <div className={styles.content}>
         <img
