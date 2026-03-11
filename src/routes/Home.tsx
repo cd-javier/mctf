@@ -6,6 +6,8 @@ import styles from './Home.module.css';
 
 import type { HOMEPAGE_QUERY_RESULT } from '../lib/sanity.types';
 import { imgUrl } from '../lib/imgUrl';
+import { usePageMeta } from '../lib/usePageData';
+import { SEO } from '../lib/SEO';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Section from '../layouts/Section';
@@ -40,6 +42,8 @@ export default function Home() {
     contact,
     trustedBy,
   } = data;
+
+  usePageMeta(SEO.home)
 
   return (
     <>

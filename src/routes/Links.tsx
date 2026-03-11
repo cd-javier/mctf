@@ -4,6 +4,9 @@ import styles from './Links.module.css';
 import { imgUrl } from '../lib/imgUrl';
 import SocialLinks from '../components/SocialLinks';
 
+import { usePageMeta } from '../lib/usePageData';
+import { SEO } from '../lib/SEO';
+
 import type { LINKS_QUERY_RESULT } from '../lib/sanity.types';
 import classNames from 'classnames';
 
@@ -13,7 +16,7 @@ type LinkListData = NonNullable<LinksData['links']>;
 export default function Links() {
   const data = useLoaderData<LinksData>();
 
-  console.log(data.links);
+  usePageMeta(SEO.links);
 
   return (
     <div className={styles.linksWrapper}>

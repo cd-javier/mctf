@@ -2,6 +2,9 @@ import { useLoaderData } from 'react-router-dom';
 import { PortableText } from '@portabletext/react';
 import { imgUrl } from '../lib/imgUrl';
 
+import { usePageMeta } from '../lib/usePageData';
+import { SEO } from '../lib/SEO';
+
 import styles from './Services.module.css';
 
 import DefaultLayout from '../layouts/DefaultLayout';
@@ -21,6 +24,8 @@ export default function Services() {
   const data = useLoaderData<ServicesPageData>();
 
   const { hero, services, trustedBy } = data;
+
+  usePageMeta(SEO.services);
 
   return (
     <>
@@ -86,7 +91,7 @@ function CTA() {
     >
       <h2>Let's work together</h2>
       <p>Ready to make take the leap?</p>
-    <Button to='/#contact'>Get in touch</Button>
+      <Button to="/#contact">Get in touch</Button>
     </Section>
   );
 }

@@ -3,6 +3,9 @@ import classNames from 'classnames';
 import { PortableText } from '@portabletext/react';
 import { imgUrl } from '../lib/imgUrl';
 
+import { usePageMeta } from '../lib/usePageData';
+import { SEO } from '../lib/SEO';
+
 import styles from './About.module.css';
 
 import DefaultLayout from '../layouts/DefaultLayout';
@@ -23,6 +26,8 @@ export default function About() {
   const data = useLoaderData<BioData>();
 
   const { hero, letter, quote, proBio, certs } = data;
+
+  usePageMeta(SEO.about);
 
   return (
     <>
