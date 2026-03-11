@@ -267,7 +267,11 @@ function Collab({
           <img src={mediaPlaceholder} className={styles.thumbnail} alt="" />
         )}
         {data.platform && (
-          <img src={PlatformIcon[data.platform]} className={styles.platform} />
+          <img
+            src={PlatformIcon[data.platform]}
+            className={styles.platform}
+            alt={`${data.platform} logo`}
+          />
         )}
       </div>
       <div className={styles.collabTitle}>{data.title}</div>
