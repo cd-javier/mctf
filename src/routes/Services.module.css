@@ -1,11 +1,19 @@
 .serviceSection img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .serviceSection .body {
-    max-width: 800px;
+  max-width: 800px;
 }
 
 .trustedByWrapper {
-    background-color: var(--text-main);
+  background-color: var(--text-main);
+}
+
+.CTASection {
+  text-align: center;
+}
+
+.CTASection h2 {
+    margin: 0;
 }

@@ -89,9 +89,13 @@ function CTA() {
       className={styles.CTASection}
       flex
     >
-      <h2>Let's work together</h2>
-      <p>Ready to make take the leap?</p>
-      <Button to="/#contact">Get in touch</Button>
+      <h2>This is where it starts</h2>
+      <p>
+        No hard sell, no pressure. Just an honest conversation about where you
+        are and where you want to be. <br /> Pick your starting point. I'll
+        meet you there.
+      </p>
+      <Button to="/#contact">Let's talk</Button>
     </Section>
   );
 }
