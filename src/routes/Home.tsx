@@ -165,37 +165,59 @@ function Testimonials({ data }: { data: TestimonialsData }) {
       className={styles.testimonialsSection}
       flex
     >
-      <div className={styles.arrow} onClick={prevQuote}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <title>chevron-left</title>
+      <button
+        className={styles.arrow}
+        onClick={prevQuote}
+        aria-label="Previous testimonial"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
           <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
         </svg>
-      </div>
+      </button>
+
       <div
         className={classNames(styles.testimonial, [
           { [styles.visible]: isVisible },
           { [styles.hidden]: !isVisible },
         ])}
         onTransitionEnd={handleTransitionEnd}
+        aria-live="polite"
+        aria-atomic="true"
       >
         <div className={classNames(styles.quote, 'multiline')}>
           {data![index].quote}
         </div>
         <div className={styles.author}>{data![index].person}</div>
       </div>
-      <div className={styles.arrow} onClick={nextQuote}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <title>chevron-right</title>
+
+      <button
+        className={styles.arrow}
+        onClick={nextQuote}
+        aria-label="Next testimonial"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
           <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
         </svg>
-      </div>
-      <div className={styles.dots}>
+      </button>
+
+      <div className={styles.dots} role="tablist" aria-label="Testimonials">
         {data!.map((_q, i) => (
-          <div
+          <button
             key={i}
+            role="tab"
+            aria-selected={i === index}
+            aria-label={`Testimonial ${i + 1} of ${data!.length}`}
             onClick={() => changeToIndex(i)}
             className={classNames([{ [styles.selected]: i === index }])}
-          ></div>
+          />
         ))}
       </div>
     </Section>
@@ -305,7 +327,7 @@ function Contact({ data }: { data: ContactData }) {
     <Section
       wrapperClassName={styles.contactWrapper}
       className={styles.contactSection}
-      anchor='contact'
+      anchor="contact"
       flex
     >
       <h2>{data.heading}</h2>
