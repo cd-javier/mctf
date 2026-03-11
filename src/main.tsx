@@ -6,10 +6,10 @@ import './global.css';
 
 import routes from './routes';
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, { basename: '/mctf/' });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
+  </StrictMode>,
 );
