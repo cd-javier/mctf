@@ -1,7 +1,7 @@
 import { imgUrl } from "../lib/imgUrl";
 import styles from './TrustedByGrid.module.css'
 
-export default function trustedByGrid({
+export default function TrustedByGrid({
   companies,
 }: {
   companies: { name: string | null; logoUrl: string | null }[];
