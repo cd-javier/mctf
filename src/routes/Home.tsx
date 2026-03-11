@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames';
 
 import styles from './Home.module.css';
@@ -16,7 +16,6 @@ import WBHLogo from '../components/WBHLogo';
 import PlatformIcon from '../components/PlatformIcon';
 import mediaPlaceholder from '../assets/media-placeholder.png';
 import SocialLinks from '../components/SocialLinks';
-import Anchor from '../components/Anchor';
 import TrustedByGrid from '../components/TrustedByGrid';
 
 type HomepageData = NonNullable<HOMEPAGE_QUERY_RESULT>;
@@ -43,7 +42,7 @@ export default function Home() {
     trustedBy,
   } = data;
 
-  usePageMeta(SEO.home)
+  usePageMeta(SEO.home);
 
   return (
     <>
@@ -145,10 +144,10 @@ function Testimonials({ data }: { data: TestimonialsData }) {
     setTargetIndex(newIndex);
   }
 
-  function nextQuote() {
+  const nextQuote = useCallback(() => {
     if (!data) return;
     changeToIndex(index === data.length - 1 ? 0 : index + 1);
-  }
+  }, [index, data]);
 
   function prevQuote() {
     if (!data) return;
@@ -156,9 +155,9 @@ function Testimonials({ data }: { data: TestimonialsData }) {
   }
 
   useEffect(() => {
-    const timer = setInterval(nextQuote, 6000); // every 6 seconds
+    const timer = setInterval(nextQuote, 6000);
     return () => clearInterval(timer);
-  });
+  }, [index, nextQuote]);
 
   return (
     <Section
