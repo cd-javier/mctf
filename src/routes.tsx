@@ -5,7 +5,7 @@ import Home from './routes/Home';
 import About from './routes/About';
 import Services from './routes/Services';
 import Links from './routes/Links';
-import ErrorPage from './routes/Errorpage';
+import ErrorPage from './routes/ErrorPage';
 import {
   homepageLoader,
   bioLoader,
@@ -17,6 +17,7 @@ const routes: RouteObject[] = [
   {
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    hydrateFallbackElement: null,
     children: [
       { path: '/', element: <Home />, loader: homepageLoader },
       { path: '/about', element: <About />, loader: bioLoader },
