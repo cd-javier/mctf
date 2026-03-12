@@ -28,7 +28,7 @@ export const trustedByType = defineType({
             defineField({
               name: 'image',
               title: 'Image',
-              description: 'dimensions',
+              description: 'Min 300px wide. Transparent PNG preferred.',
               type: 'image',
               validation: (rule) => rule.required(),
             }),

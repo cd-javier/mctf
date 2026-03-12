@@ -19,7 +19,7 @@ const otherLinks = defineField({
     defineField({
       name: 'image',
       title: 'Image',
-      description: 'dimensions',
+      description: '1600x400px',
       type: 'image',
       options: {hotspot: true},
     }),
@@ -37,6 +37,7 @@ export const linksType = defineType({
   fields: [
     defineField({
       name: 'profile_photo',
+      description: 'Min 400x400px',
       title: 'Profile Photo',
       type: 'image',
       options: {hotspot: true},

@@ -26,7 +26,6 @@ export const servicesType = defineType({
     defineField({
       name: 'heading',
       title: 'Heading',
-      description: 'length',
       type: 'string',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
@@ -34,7 +33,6 @@ export const servicesType = defineType({
     defineField({
       name: 'subheading',
       title: 'Subheading',
-      description: 'length',
       type: 'string',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
@@ -42,7 +40,7 @@ export const servicesType = defineType({
     defineField({
       name: 'hero_image',
       title: 'Image',
-      description: 'dimensions',
+      description: 'Min 1920x600px',
       type: 'image',
       options: {hotspot: true},
       fieldset: 'hero',
@@ -68,6 +66,7 @@ export const servicesType = defineType({
             }),
             defineField({
               name: 'image',
+              description: 'Min 1800x300px',
               title: 'Image',
               type: 'image',
               options: {hotspot: true},

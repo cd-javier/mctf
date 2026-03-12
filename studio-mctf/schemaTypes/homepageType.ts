@@ -56,7 +56,6 @@ export const homepageType = defineType({
     defineField({
       name: 'hero_heading',
       title: 'Heading',
-      description: 'length',
       type: 'text',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
@@ -64,7 +63,6 @@ export const homepageType = defineType({
     defineField({
       name: 'hero_subheading',
       title: 'Subheading',
-      description: 'length',
       type: 'text',
       fieldset: 'hero',
       validation: (rule) => rule.required(),
@@ -87,7 +85,7 @@ export const homepageType = defineType({
     defineField({
       name: 'hero_image',
       title: 'Image',
-      description: 'dimensions',
+      description: 'Min 1920x1080px',
       type: 'image',
       options: {hotspot: true},
       fieldset: 'hero',
@@ -103,7 +101,6 @@ export const homepageType = defineType({
     defineField({
       name: 'WBH_subheading',
       title: 'Subheading',
-      description: 'length',
       type: 'text',
       fieldset: 'wbh',
       hidden: ({parent}) => !parent?.show_WBH_hero,
@@ -148,7 +145,6 @@ export const homepageType = defineType({
     defineField({
       name: 'bio_snippet',
       title: 'Snippet',
-      description: 'length',
       type: 'text',
       fieldset: 'bio',
       validation: (rule) => rule.required(),
@@ -163,7 +159,7 @@ export const homepageType = defineType({
     }),
     defineField({
       name: 'bio_image',
-      description: 'dimensions',
+      description: 'Min 1800x1200px',
       type: 'image',
       options: {hotspot: true},
       fieldset: 'bio',
@@ -252,6 +248,7 @@ export const homepageType = defineType({
             }),
             defineField({
               name: 'image',
+              description: 'Min 900x300px',
               title: 'Image',
               type: 'image',
               options: {hotspot: true},
@@ -272,7 +269,6 @@ export const homepageType = defineType({
     defineField({
       name: 'collab_heading',
       title: 'Heading',
-      description: 'length',
       type: 'string',
       fieldset: 'collabs',
       validation: (rule) => rule.required(),
@@ -308,6 +304,7 @@ export const homepageType = defineType({
             }),
             defineField({
               name: 'image',
+              description: 'Min 150x150px',
               title: 'Image',
               type: 'image',
               options: {hotspot: true},
@@ -373,7 +370,7 @@ export const homepageType = defineType({
     defineField({
       name: 'contact_image',
       title: 'Image',
-      description: 'dimensions',
+      description: 'Min 1800x1200px',
       type: 'image',
       options: {hotspot: true},
       fieldset: 'hero',
