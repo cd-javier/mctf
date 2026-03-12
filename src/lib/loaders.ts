@@ -136,7 +136,6 @@ export async function homepageLoader() {
     if (data) {
       cache.set(cacheKey, data);
       console.log('[cache set]', cacheKey);
-      console.log(data);
     }
 
     return data;

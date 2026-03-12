@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import GoatCounter from '../components/GoatCounter';
 
 export default function RootLayout() {
   const { pathname } = useLocation();
@@ -10,5 +11,10 @@ export default function RootLayout() {
     }
   }, [pathname]);
 
-  return <Outlet />;
+  return (
+    <>
+      <GoatCounter />
+      <Outlet />
+    </>
+  );
 }
