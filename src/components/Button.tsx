@@ -2,6 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 
 import styles from './Button.module.css';
 import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import classNames from 'classnames';
 
 type ButtonProps = {
@@ -30,6 +31,14 @@ export default function Button({
         {children}
       </a>
     );
+
+  if (to && to.includes('#')) {
+    return (
+      <HashLink to={to} className={classNames(styles.button, styles[color])}>
+        {children}
+      </HashLink>
+    );
+  }
 
   if (to) {
     return (

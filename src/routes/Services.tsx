@@ -50,7 +50,7 @@ function ServicesSection({ data }: { data: ServicesData }) {
         key={index}
         flex
       >
-        <h2>{service.title}</h2>
+        <h2 id={service.title?.split(' ')[0].toLowerCase()}>{service.title}</h2>
         <img
           src={imgUrl(service.imageUrl!)
             .width(1800)
