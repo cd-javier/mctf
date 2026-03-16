@@ -36,6 +36,11 @@
   font-size: 1.25rem;
 }
 
+.tagline {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
 .footer ul {
   padding: 0;
   margin: 0;

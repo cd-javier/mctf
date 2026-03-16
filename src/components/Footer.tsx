@@ -11,6 +11,10 @@ export default function Footer() {
       <div className={styles.footer}>
         <div className={styles.footerInfo}>
           <div className={styles.logo}>MatthewCTFuller</div>
+          <p className={styles.tagline}>
+            Behavioural change · Addiction recovery · LGBTQ+ wellbeing ·
+            Performance coaching
+          </p>
           <SocialLinks />
           <a href="mailto:info@MatthewCTFuller.com">info@MatthewCTFuller.com</a>
         </div>
