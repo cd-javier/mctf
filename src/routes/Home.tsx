@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './Home.module.css';
 
 import type { HOMEPAGE_QUERY_RESULT } from '../lib/sanity.types';
-import { imgUrl } from '../lib/imgUrl';
+import { imgUrl, sanitySrcSet } from '../lib/imgUrl';
 import { usePageMeta } from '../lib/usePageData';
 import { SEO } from '../lib/SEO';
 
@@ -110,11 +110,9 @@ function Bio({ data }: { data: BioData }) {
     >
       {data.imageUrl && (
         <img
-          src={imgUrl(data.imageUrl)
-            .width(1800)
-            .height(1200)
-            .format('webp')
-            .url()}
+          src={imgUrl(data.imageUrl).width(900).format('webp').url()}
+          srcSet={sanitySrcSet(data.imageUrl, [900, 1800, 2700])}
+          sizes="(min-width: 1024px) 50vw, 100vw"
           alt=""
         />
       )}
@@ -259,7 +257,11 @@ function Collab({
       <div className={styles.collabImage}>
         {data.imageUrl ? (
           <img
-            src={imgUrl(data.imageUrl).width(150).height(150).url()}
+            src={imgUrl(data.imageUrl)
+              .width(300)
+              .height(300)
+              .format('webp')
+              .url()}
             className={styles.thumbnail}
             alt={`Thumbnail of ${data.title}`}
           />
@@ -298,7 +300,6 @@ function Services({ data }: { data: ServicesData }) {
                 alt=""
               />
               <div className={styles.content}>
-                {' '}
                 <h3>{service.title}</h3>
                 <p className="multiline">{service.body}</p>
                 <Button to={service.ctaUrl!}>{service.cta}</Button>
@@ -337,11 +338,9 @@ function Contact({ data }: { data: ContactData }) {
       <h2>{data.heading}</h2>
       <div className={styles.content}>
         <img
-          src={imgUrl(data.imageUrl!)
-            .width(1800)
-            .height(1200)
-            .format('webp')
-            .url()}
+          src={imgUrl(data.imageUrl!).width(900).format('webp').url()}
+          srcSet={sanitySrcSet(data.imageUrl!, [900, 1800, 2700])}
+          sizes="(min-width: 1024px) 50vw, 100vw"
           alt=""
         />
         <div className={styles.contactText}>
