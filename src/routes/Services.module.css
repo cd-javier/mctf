@@ -37,12 +37,25 @@
 /* -------------------
 ----- SERVICES -------
 ------------------- */
-.serviceSection img {
+.servicesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.service {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.service img {
   max-width: 100%;
 }
 
-.serviceSection .body {
-  max-width: 800px;
+.service p {
+  margin-top: 0;
 }
 
 .trustedByWrapper {
@@ -55,4 +68,14 @@
 
 .CTASection h2 {
   margin: 0;
+}
+
+@media (min-width: 1280px) {
+  .servicesGrid {
+    flex-direction: row;
+  }
+
+  .servicesGrid > * {
+    flex: 1;
+  }
 }

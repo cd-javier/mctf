@@ -66,29 +66,36 @@ function Hero({ data }: { data: HeroData }) {
 function ServicesSection({ data }: { data: ServicesData }) {
   if (!data) return;
 
-  return data.map((service, index) => {
-    return (
-      <Section
-        wrapperClassName={styles.serviceWrapper}
-        className={styles.serviceSection}
-        key={index}
-        flex
-      >
-        <h2 id={service.title?.split(' ')[0].toLowerCase()}>{service.title}</h2>
-        <img
-          src={imgUrl(service.imageUrl!)
-            .width(1800)
-            .height(300)
-            .format('webp')
-            .url()}
-          alt=""
-        />
-        <div className={styles.body}>
-          <PortableText value={service.body!} />
-        </div>
-      </Section>
-    );
-  });
+  return (
+    <Section
+      wrapperClassName={styles.serviceWrapper}
+      className={styles.serviceSection}
+      flex
+    >
+      <div className={styles.servicesGrid}>
+        {data.map((service, index) => {
+          return (
+            <div key={index} className={styles.service}>
+              <img
+                src={imgUrl(service.imageUrl!)
+                  .width(1800)
+                  .height(300)
+                  .format('webp')
+                  .url()}
+                alt=""
+              />
+              <h2 id={service.title?.split(' ')[0].toLowerCase()}>
+                {service.title}
+              </h2>
+              <div className={styles.body}>
+                <PortableText value={service.body!} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
 }
 
 function TrustedBy({ data }: { data: TrustedByData }) {
