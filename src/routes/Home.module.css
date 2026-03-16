@@ -260,7 +260,7 @@
 
   background-color: var(--text-main);
   color: var(--bg-main);
-  padding: 1rem;
+  padding: 1.5rem;
 
   display: flex;
   flex-direction: column;
