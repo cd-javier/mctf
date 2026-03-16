@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 import SocialLinks from './SocialLinks';
 
@@ -25,7 +26,7 @@ export default function Footer() {
               <Link to={'/services'}>Services</Link>
             </li>
             <li>
-              <Link to={'/#contact'}>Get in touch</Link>
+              <HashLink to={'/#contact'}>Get in touch</HashLink>
             </li>
             <li>
               <a href="/">The Wellbeing Hypocrite Club</a>
