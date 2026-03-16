@@ -1,5 +1,5 @@
 .navbar {
-  z-index: 1;
+  z-index: 10;
   width: 100%;
   max-width: 1800px;
   margin: 0 auto;
@@ -53,6 +53,7 @@
   right: 0;
   list-style-type: none;
   margin: 0;
+  z-index: 10;
 }
 
 .navLinks.open {
@@ -68,6 +69,14 @@
 
 .navLinks li svg {
   fill: var(--text);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  top: 72px;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9;
 }
 
 @media (min-width: 768px) {
@@ -87,6 +96,10 @@
 
   .navLinks li {
     padding: 0;
+  }
+
+  .backdrop {
+    display: none;
   }
 }
 
