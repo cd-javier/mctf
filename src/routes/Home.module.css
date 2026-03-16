@@ -31,6 +31,8 @@
   font-size: 1.75rem;
   color: var(--text-main);
   text-transform: none;
+  margin: 0;
+  line-height: 130%;
 }
 
 .subheading {
@@ -46,13 +48,9 @@
   color: var(--bg-main);
 }
 
-.wbhSection {
-  padding: 2rem 0;
-}
-
 .wbhSection svg {
   fill: #a37e3e;
-  max-width: 100%;
+  max-width: 80%;
   width: 400px;
   height: auto;
 }
@@ -189,6 +187,10 @@
 /* -------------------
 ------- COLLABS ------
 ------------------- */
+.collabsWrapper {
+  padding-top: 0!important;
+}
+
 .collabGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, 150px);

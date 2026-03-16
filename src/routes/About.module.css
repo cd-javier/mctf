@@ -69,6 +69,10 @@ h2 {
 ------- CERTS --------
 ------------------- */
 
+.certsWrapper {
+  padding-top: 0 !important;
+}
+
 .certsAccordion {
   display: flex;
   flex-direction: column;
