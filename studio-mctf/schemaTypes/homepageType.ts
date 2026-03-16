@@ -373,7 +373,7 @@ export const homepageType = defineType({
       description: 'Min 1800x1200px',
       type: 'image',
       options: {hotspot: true},
-      fieldset: 'hero',
+      fieldset: 'contact',
       validation: (rule) => rule.required(),
     }),
 
