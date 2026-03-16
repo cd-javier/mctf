@@ -10,6 +10,7 @@ import styles from './About.module.css';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Section from '../layouts/Section';
+import Button from '../components/Button';
 
 import type { BIO_QUERY_RESULT } from '../lib/sanity.types';
 import { useState } from 'react';
@@ -133,6 +134,8 @@ function Certs({ data }: { data: CertsData }) {
       <CertsAccordion certs={data.certifications!} />
       <div className={styles.textBody}>
         <PortableText value={data.postText!} />
+        <br   />
+        <Button to="/#contact">Let's Talk</Button>
       </div>
     </Section>
   );
