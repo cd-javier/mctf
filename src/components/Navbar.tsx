@@ -21,7 +21,7 @@ export default function Navbar() {
       {isOpen && <div className={styles.backdrop} onClick={close} aria-hidden="true" />}
       <header className={styles.navbar}>
         <NavLink to="/" className={styles.logo}>
-          MatthewCTFuller
+          Matthew CT Fuller
         </NavLink>
         <nav>
           <div
