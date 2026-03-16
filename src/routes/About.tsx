@@ -33,7 +33,7 @@ export default function About() {
     <>
       <DefaultLayout>
         <Hero data={hero} />
-        <Letter data={letter} />
+        <Letter data={letter} heroImg={hero.imageUrl} />
         <Quote data={quote} />
         <ProBio data={proBio} />
         <Certs data={certs} />
@@ -66,13 +66,29 @@ export function Hero({ data }: { data: HeroData }) {
   );
 }
 
-function Letter({ data }: { data: LetterData }) {
+function Letter({
+  data,
+  heroImg,
+}: {
+  data: LetterData;
+  heroImg: HeroData['imageUrl'];
+}) {
   return (
     <Section
       wrapperClassName={styles.letterWrapper}
       className={styles.letterSection}
+      noPadding
+      flex
     >
-      <PortableText value={data!} />
+      <div className={styles.letterPortrait}>
+        <img
+          src={imgUrl(heroImg!).width(900).height(1200).format('webp').url()}
+          alt=""
+        />
+      </div>
+      <div className={styles.letter}>
+        <PortableText value={data!} />
+      </div>
     </Section>
   );
 }

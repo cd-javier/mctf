@@ -1,5 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
 import { PortableText } from '@portabletext/react';
+import classNames from 'classnames';
 import { imgUrl } from '../lib/imgUrl';
 
 import { usePageMeta } from '../lib/usePageData';
@@ -11,12 +12,11 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import Section from '../layouts/Section';
 
 import type { SERVICES_QUERY_RESULT } from '../lib/sanity.types';
-import { Hero } from './About';
 import TrustedByGrid from '../components/TrustedByGrid';
 import Button from '../components/Button';
 
 type ServicesPageData = NonNullable<SERVICES_QUERY_RESULT>;
-// type HeroData = ServicesPageData['hero'];
+type HeroData = ServicesPageData['hero'];
 type ServicesData = ServicesPageData['services'];
 type TrustedByData = ServicesPageData['trustedBy'];
 
@@ -36,6 +36,30 @@ export default function Services() {
         <CTA />
       </DefaultLayout>
     </>
+  );
+}
+
+function Hero({ data }: { data: HeroData }) {
+  return (
+    <Section
+      wrapperClassName={styles.heroWrapper}
+      className={styles.heroSection}
+      noPadding
+      flex
+    >
+      <div
+        className={styles.heroBg}
+        style={{
+          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').url()})`,
+        }}
+      ></div>
+      <h1 className={classNames(styles.heading, 'multiline')}>
+        {data.heading}
+      </h1>
+      <p className={classNames(styles.subheading, 'large-body', 'multiline')}>
+        {data.subheading}
+      </p>
+    </Section>
   );
 }
 
@@ -92,8 +116,8 @@ function CTA() {
       <h2>This is where it starts</h2>
       <p>
         No hard sell, no pressure. Just an honest conversation about where you
-        are and where you want to be. <br /> Pick your starting point. I'll
-        meet you there.
+        are and where you want to be. <br /> Pick your starting point. I'll meet
+        you there.
       </p>
       <Button to="/#contact">Let's talk</Button>
     </Section>

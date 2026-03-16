@@ -1,3 +1,42 @@
+/* -------------------
+------- HERO ---------
+------------------- */
+.heroWrapper {
+  position: relative;
+}
+
+.heroSection {
+  min-height: 300px;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.heroSection .heading {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.heroSection .subheading {
+  margin: 0;
+  padding: 0;
+}
+
+.heroBg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+
+  background-position: center;
+  background-size: cover;
+}
+
+/* -------------------
+----- SERVICES -------
+------------------- */
 .serviceSection img {
   max-width: 100%;
 }
@@ -15,5 +54,5 @@
 }
 
 .CTASection h2 {
-    margin: 0;
+  margin: 0;
 }

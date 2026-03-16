@@ -46,6 +46,12 @@ h2 {
 .letterSection {
   max-width: 600px;
   font-style: italic;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.letterPortrait {
+  display: none;
 }
 
 /* -------------------
@@ -116,29 +122,41 @@ h2 {
 /* -------------------
 ----- RESPONSIVE -----
 ------------------- */
+/* Tablets (768px and up) */
 @media (min-width: 768px) {
-  .heroSection {
-    min-height: 400px;
-  }
-  .heroSection .heading {
-    font-size: 2rem;
-  }
-  .wbhSection .subheading {
-    font-size: 1.25rem;
-  }
-
-  .bioSection img,
-  .contactSection img {
-    max-width: 600px;
-  }
-
-  .testimonialsSection {
-    gap: 3rem !important;
-  }
 }
 
 /* Small laptops (1024px and up) */
 @media (min-width: 1024px) {
+  .heroSection {
+    min-height: 200px;
+  }
+
+  .heroBg {
+    display: none;
+  }
+
+
+  .letterSection{
+    max-width: 1200px;
+    width: 100%;
+    flex-direction: row;
+    gap: 2rem;
+    padding-top: 0;
+  }
+
+  .letterSection > * {
+    flex: 1;
+  }
+
+  .letterPortrait {
+    display: block;
+    max-width: 50%;
+  }
+
+  .letterPortrait img {
+    max-width: 100%;
+  }
 }
 
 /* Desktop (1280px and up) */
