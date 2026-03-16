@@ -34,7 +34,7 @@ export default function Footer() {
           </ul>
         </nav>
         <div className={styles.disclaimer}>
-          @ 2026 MatthewCTFuller - Website by{' '}
+          @ {new Date().getFullYear()} MatthewCTFuller - Website by{' '}
           <a
             href="http://www.javierquiroga.com"
             target="_blank"
