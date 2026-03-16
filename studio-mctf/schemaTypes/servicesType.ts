@@ -19,6 +19,11 @@ export const servicesType = defineType({
       title: 'Trusted By',
       options: {collapsible: true, collapsed: false},
     },
+    {
+      name: 'cta',
+      title: 'Call To Action',
+      options: {collapsible: true, collapsed: false},
+    },
   ],
 
   fields: [
@@ -104,6 +109,36 @@ export const servicesType = defineType({
       to: {type: 'trusted_by'},
       readOnly: true,
       hidden: ({parent}) => !parent?.show_trusted_by,
+    }),
+
+    // CTA
+    defineField({
+      name: 'cta_heading',
+      title: 'Heading',
+      type: 'string',
+      fieldset: 'cta',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'cta_body',
+      title: 'Body',
+      type: 'text',
+      fieldset: 'cta',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'cta_button_text',
+      title: 'Button Text',
+      type: 'string',
+      fieldset: 'cta',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'cta_button_link',
+      title: 'Button Link',
+      type: 'string',
+      fieldset: 'cta',
+      validation: (rule) => rule.required(),
     }),
   ],
 

@@ -107,7 +107,14 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
         name,
         "logoUrl": image.asset->url
       }
-    }
+    },
+
+    "cta": {
+      "heading": cta_heading,
+      "body": cta_body,
+      "buttonText": cta_button_text,
+      "buttonLink": cta_button_link
+}
   }`);
 
 const LINKS_QUERY = defineQuery(`*[_type == "links"][0] {

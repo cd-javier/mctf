@@ -19,11 +19,12 @@ type ServicesPageData = NonNullable<SERVICES_QUERY_RESULT>;
 type HeroData = ServicesPageData['hero'];
 type ServicesData = ServicesPageData['services'];
 type TrustedByData = ServicesPageData['trustedBy'];
+type CTAData = ServicesPageData['cta'];
 
 export default function Services() {
   const data = useLoaderData<ServicesPageData>();
 
-  const { hero, services, trustedBy } = data;
+  const { hero, services, trustedBy, cta } = data;
 
   usePageMeta(SEO.services);
 
@@ -33,7 +34,7 @@ export default function Services() {
         <Hero data={hero} />
         <ServicesSection data={services} />
         <TrustedBy data={trustedBy} />
-        <CTA />
+        <CTA data={cta} />
       </DefaultLayout>
     </>
   );
@@ -113,20 +114,16 @@ function TrustedBy({ data }: { data: TrustedByData }) {
   );
 }
 
-function CTA() {
+function CTA({ data }: { data: CTAData }) {
   return (
     <Section
       wrapperClassName={styles.CTAWrapper}
       className={styles.CTASection}
       flex
     >
-      <h2>This is where it starts</h2>
-      <p>
-        No hard sell, no pressure. Just an honest conversation about where you
-        are and where you want to be. <br /> Pick your starting point. I'll meet
-        you there.
-      </p>
-      <Button to="/#contact">Let's talk</Button>
+      <h2>{data.heading}</h2>
+      <p className="large-body multiline">{data.body}</p>
+      <Button to={data.buttonLink!}>{data.buttonText}</Button>
     </Section>
   );
 }
