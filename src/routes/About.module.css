@@ -128,6 +128,14 @@ h2 {
 
 /* Small laptops (1024px and up) */
 @media (min-width: 1024px) {
+  .heroWrapper {
+    background-color: var(--accent-main);
+  }
+
+  .heroWrapper h1 {
+    color: var(--bg-main)
+  }
+
   .heroSection {
     min-height: 200px;
   }
