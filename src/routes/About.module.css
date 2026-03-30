@@ -129,23 +129,26 @@ h2 {
 /* Small laptops (1024px and up) */
 @media (min-width: 1024px) {
   .heroWrapper {
-    background-color: var(--accent-main);
+    background-color: var(--text-main);
+    color: var(--bg-main);
   }
 
   .heroWrapper h1 {
-    color: var(--bg-main)
+    color: var(--accent-main);
   }
 
   .heroSection {
-    min-height: 200px;
+    min-height: 150px;
+    gap: 0.5rem;
+    text-align: center;
+    align-items: center;
   }
 
   .heroBg {
     display: none;
   }
 
-
-  .letterSection{
+  .letterSection {
     max-width: 1200px;
     width: 100%;
     flex-direction: row;
