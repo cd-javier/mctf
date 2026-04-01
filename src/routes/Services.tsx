@@ -24,7 +24,7 @@ type CTAData = ServicesPageData['cta'];
 export default function Services() {
   const data = useLoaderData<ServicesPageData>();
 
-  const { hero, services, trustedBy, cta } = data;
+  const { hero, services, trustedBy, cta, whyWorkWithMe } = data;
 
   usePageMeta(SEO.services);
 
@@ -32,6 +32,7 @@ export default function Services() {
     <>
       <DefaultLayout>
         <Hero data={hero} />
+        <WhyWorkWithMe data={whyWorkWithMe} />
         <ServicesSection data={services} />
         <TrustedBy data={trustedBy} />
         <CTA data={cta} />
@@ -64,13 +65,29 @@ function Hero({ data }: { data: HeroData }) {
   );
 }
 
+function WhyWorkWithMe({ data }: { data: ServicesPageData['whyWorkWithMe'] }) {
+  if (!data?.heading && !data?.body) return null;
+  return (
+    <Section
+      wrapperClassName={styles.whyWorkWithMeWrapper}
+      className={styles.whyWorkWithMeSection}
+      flex
+    >
+      <h2>{data.heading}</h2>
+      <div className={styles.body}>
+        <PortableText value={data.body!} />
+      </div>
+    </Section>
+  );
+}
+
 function ServicesSection({ data }: { data: ServicesData }) {
   if (!data) return;
 
   return (
     <Section
-      wrapperClassName={styles.serviceWrapper}
-      className={styles.serviceSection}
+      wrapperClassName={styles.servicesWrapper}
+      className={styles.servicesSection}
       flex
     >
       <div className={styles.servicesGrid}>
@@ -91,6 +108,7 @@ function ServicesSection({ data }: { data: ServicesData }) {
               <div className={styles.body}>
                 <PortableText value={service.body!} />
               </div>
+              <Button href={service.ctaUrl!}>{service.cta}</Button>
             </div>
           );
         })}

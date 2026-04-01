@@ -89,6 +89,11 @@ const BIO_QUERY = defineQuery(`*[_type == "bio"][0] {
   }`);
 
 const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
+    "whyWorkWithMe": {
+      "heading": why_work_with_me_heading,
+      "body": why_work_with_me_body
+    },
+
     "hero": {
       heading,
       subheading,
@@ -98,7 +103,9 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
     services[]{
       title,
       body,
-      "imageUrl": image.asset->url
+      "imageUrl": image.asset->url,
+      "cta": cta_text,
+      "ctaUrl": cta_link
     },
 
     "trustedBy": {
@@ -114,7 +121,7 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
       "body": cta_body,
       "buttonText": cta_button_text,
       "buttonLink": cta_button_link
-}
+    }
   }`);
 
 const LINKS_QUERY = defineQuery(`*[_type == "links"][0] {

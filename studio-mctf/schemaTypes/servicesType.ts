@@ -10,6 +10,11 @@ export const servicesType = defineType({
 
   fieldsets: [
     {
+      name: 'why_work_with_me',
+      title: 'Why Work With Me',
+      options: {collapsible: true, collapsed: false},
+    },
+    {
       name: 'hero',
       title: 'Hero Section',
       options: {collapsible: true, collapsed: false},
@@ -27,6 +32,23 @@ export const servicesType = defineType({
   ],
 
   fields: [
+    // WHY WORK WITH ME
+    defineField({
+      name: 'why_work_with_me_heading',
+      title: 'Heading',
+      type: 'string',
+      fieldset: 'why_work_with_me',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'why_work_with_me_body',
+      title: 'Body',
+      type: 'array',
+      of: [{type: 'block'}],
+      fieldset: 'why_work_with_me',
+      validation: (rule) => rule.required(),
+    }),
+
     // HERO
     defineField({
       name: 'heading',
@@ -82,6 +104,16 @@ export const servicesType = defineType({
               title: 'body',
               type: 'array',
               of: [{type: 'block'}],
+            }),
+            defineField({
+              name: 'cta_text',
+              title: 'CTA Text',
+              type: 'string',
+            }),
+            defineField({
+              name: 'cta_link',
+              title: 'CTA Link',
+              type: 'string',
             }),
           ],
           preview: {

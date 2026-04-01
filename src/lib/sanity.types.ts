@@ -28,24 +28,16 @@ export type Links = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  profile_photo?: {
+  profile_photo: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  social_links?: Array<{
-    enabled?: boolean;
-    url?: string;
-    platform?: "instagram" | "linkedin" | "tiktok" | "youtube";
-    _type: "social_link";
-    _key: string;
-  }>;
   other_links?: Array<{
-    title?: string;
-    description?: string;
-    url?: string;
+    title: string;
+    url: string;
     image?: {
       asset?: SanityImageAssetReference;
       media?: unknown;
@@ -60,18 +52,18 @@ export type Links = {
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type Trusted_byReference = {
@@ -87,9 +79,28 @@ export type Services = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  heading?: string;
-  subheading?: string;
-  hero_image?: {
+  why_work_with_me_heading: string;
+  why_work_with_me_body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  heading: string;
+  subheading: string;
+  hero_image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -97,8 +108,8 @@ export type Services = {
     _type: "image";
   };
   services?: Array<{
-    title?: string;
-    image?: {
+    title: string;
+    image: {
       asset?: SanityImageAssetReference;
       media?: unknown;
       hotspot?: SanityImageHotspot;
@@ -123,11 +134,17 @@ export type Services = {
       _type: "block";
       _key: string;
     }>;
+    cta_text?: string;
+    cta_link?: string;
     _type: "service";
     _key: string;
   }>;
   show_trusted_by?: boolean;
   trusted_by?: Trusted_byReference;
+  cta_heading: string;
+  cta_body: string;
+  cta_button_text: string;
+  cta_button_link: string;
 };
 
 export type Bio = {
@@ -136,16 +153,16 @@ export type Bio = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  heading?: string;
-  subheading?: string;
-  hero_image?: {
+  heading: string;
+  subheading: string;
+  hero_image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  letter?: Array<{
+  letter: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -163,9 +180,9 @@ export type Bio = {
     _type: "block";
     _key: string;
   }>;
-  quote?: string;
-  bio_heading?: string;
-  pro_bio?: Array<{
+  quote: string;
+  bio_heading: string;
+  pro_bio: Array<{
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -183,7 +200,7 @@ export type Bio = {
     _type: "block";
     _key: string;
   }>;
-  certs_heading?: string;
+  certs_heading: string;
   certs_pre?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -203,8 +220,8 @@ export type Bio = {
     _key: string;
   }>;
   certifications?: Array<{
-    title?: string;
-    description?: string;
+    title: string;
+    description: string;
     _type: "certification";
     _key: string;
   }>;
@@ -234,11 +251,11 @@ export type Homepage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  hero_heading?: string;
-  hero_subheading?: string;
-  hero_cta?: string;
-  hero_cta_link?: string;
-  hero_image?: {
+  hero_heading: string;
+  hero_subheading: string;
+  hero_cta: string;
+  hero_cta_link: string;
+  hero_image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -249,27 +266,27 @@ export type Homepage = {
   WBH_subheading?: string;
   WBH_CTA?: string;
   WBH_CTA_link?: string;
-  bio_snippet?: string;
-  bio_CTA?: string;
-  bio_image?: {
+  bio_snippet: string;
+  bio_CTA: string;
+  bio_image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
   };
-  testimonials?: Array<{
-    quote?: string;
-    person?: string;
+  testimonials: Array<{
+    quote: string;
+    person: string;
     _type: "testimonial";
     _key: string;
   }>;
   services?: Array<{
-    title?: string;
-    body?: string;
-    cta?: string;
-    cta_link?: string;
-    image?: {
+    title: string;
+    body: string;
+    cta: string;
+    cta_link: string;
+    image: {
       asset?: SanityImageAssetReference;
       media?: unknown;
       hotspot?: SanityImageHotspot;
@@ -279,11 +296,11 @@ export type Homepage = {
     _type: "service";
     _key: string;
   }>;
-  collab_heading?: string;
+  collab_heading: string;
   collaborations?: Array<{
-    title?: string;
-    subtitle?: string;
-    url?: string;
+    title: string;
+    subtitle: string;
+    url: string;
     image?: {
       asset?: SanityImageAssetReference;
       media?: unknown;
@@ -295,11 +312,11 @@ export type Homepage = {
     _type: "collaboration";
     _key: string;
   }>;
-  contact_heading?: string;
-  contact_body?: string;
-  contact_cta_text?: string;
-  contact_cta_link?: string;
-  contact_image?: {
+  contact_heading: string;
+  contact_body: string;
+  contact_cta_text: string;
+  contact_cta_link: string;
+  contact_image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
@@ -317,8 +334,8 @@ export type Trusted_by = {
   _updatedAt: string;
   _rev: string;
   companies?: Array<{
-    name?: string;
-    image?: {
+    name: string;
+    image: {
       asset?: SanityImageAssetReference;
       media?: unknown;
       hotspot?: SanityImageHotspot;
@@ -351,9 +368,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height?: number;
-  width?: number;
-  aspectRatio?: number;
+  height: number;
+  width: number;
+  aspectRatio: number;
 };
 
 export type SanityImageMetadata = {
@@ -379,14 +396,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   source?: SanityAssetSourceData;
 };
 
@@ -408,14 +425,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
+  sha1hash: string;
+  extension: string;
+  mimeType: string;
+  size: number;
+  assetId: string;
   uploadId?: string;
-  path?: string;
-  url?: string;
+  path: string;
+  url: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -429,7 +446,7 @@ export type Geopoint = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -458,11 +475,11 @@ export type AllSanitySchemaTypes =
 // Query: *[_type == "homepage"][0] {    "hero": {      "heading": hero_heading,      "subheading": hero_subheading,      "imageUrl": hero_image.asset->url,      "cta": hero_cta,      "ctaUrl": hero_cta_link    },    "wbh": {      "show": show_WBH_hero,      "subheading": WBH_subheading,      "cta": WBH_CTA,      "ctaUrl": WBH_CTA_link    },    "bio": {      "snippet": bio_snippet,      "cta": bio_CTA,      "imageUrl": bio_image.asset->url    },    "testimonials": testimonials[]{quote, person},    "collabs": {      "heading": collab_heading,        "collaborations": collaborations[]{        title,        subtitle,        url,        "imageUrl": image.asset->url,        platform      }    },    "services": services[]{      title,      body,      cta,      "ctaUrl": cta_link,      "imageUrl": image.asset->url    },    "contact": {      "heading": contact_heading,      "body": contact_body,      "cta": contact_cta_text,      "ctaUrl": contact_cta_link,      "imageUrl": contact_image.asset->url    },    "trustedBy": {      "show": show_trusted_by,      "companies": trusted_by->companies[]{        name,        "logoUrl": image.asset->url      }    }  }
 export type HOMEPAGE_QUERY_RESULT = {
   hero: {
-    heading: string | null;
-    subheading: string | null;
+    heading: string;
+    subheading: string;
     imageUrl: string | null;
-    cta: string | null;
-    ctaUrl: string | null;
+    cta: string;
+    ctaUrl: string;
   };
   wbh: {
     show: boolean | null;
@@ -471,42 +488,42 @@ export type HOMEPAGE_QUERY_RESULT = {
     ctaUrl: string | null;
   };
   bio: {
-    snippet: string | null;
-    cta: string | null;
+    snippet: string;
+    cta: string;
     imageUrl: string | null;
   };
   testimonials: Array<{
-    quote: string | null;
-    person: string | null;
-  }> | null;
+    quote: string;
+    person: string;
+  }>;
   collabs: {
-    heading: string | null;
+    heading: string;
     collaborations: Array<{
-      title: string | null;
-      subtitle: string | null;
-      url: string | null;
+      title: string;
+      subtitle: string;
+      url: string;
       imageUrl: string | null;
       platform: "instagram" | "spotify" | "youtube" | null;
     }> | null;
   };
   services: Array<{
-    title: string | null;
-    body: string | null;
-    cta: string | null;
-    ctaUrl: string | null;
+    title: string;
+    body: string;
+    cta: string;
+    ctaUrl: string;
     imageUrl: string | null;
   }> | null;
   contact: {
-    heading: string | null;
-    body: string | null;
-    cta: string | null;
-    ctaUrl: string | null;
+    heading: string;
+    body: string;
+    cta: string;
+    ctaUrl: string;
     imageUrl: string | null;
   };
   trustedBy: {
     show: boolean | null;
     companies: Array<{
-      name: string | null;
+      name: string;
       logoUrl: string | null;
     }> | null;
   };
@@ -517,8 +534,8 @@ export type HOMEPAGE_QUERY_RESULT = {
 // Query: *[_type == "bio"][0] {    "hero": {      heading,      subheading,      "imageUrl": hero_image.asset->url    },    letter,    quote,    "proBio": {      "heading": bio_heading,      "body": pro_bio    },    "certs": {      "heading": certs_heading,      "preText": certs_pre,      certifications[]{title, description},      "postText": certs_post    }  }
 export type BIO_QUERY_RESULT = {
   hero: {
-    heading: string | null;
-    subheading: string | null;
+    heading: string;
+    subheading: string;
     imageUrl: string | null;
   };
   letter: Array<{
@@ -538,10 +555,10 @@ export type BIO_QUERY_RESULT = {
     level?: number;
     _type: "block";
     _key: string;
-  }> | null;
-  quote: string | null;
+  }>;
+  quote: string;
   proBio: {
-    heading: string | null;
+    heading: string;
     body: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -559,10 +576,10 @@ export type BIO_QUERY_RESULT = {
       level?: number;
       _type: "block";
       _key: string;
-    }> | null;
+    }>;
   };
   certs: {
-    heading: string | null;
+    heading: string;
     preText: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -582,8 +599,8 @@ export type BIO_QUERY_RESULT = {
       _key: string;
     }> | null;
     certifications: Array<{
-      title: string | null;
-      description: string | null;
+      title: string;
+      description: string;
     }> | null;
     postText: Array<{
       children?: Array<{
@@ -608,15 +625,19 @@ export type BIO_QUERY_RESULT = {
 
 // Source: ../src/lib/loaders.ts
 // Variable: SERVICES_QUERY
-// Query: *[_type == "services"][0] {    "hero": {      heading,      subheading,      "imageUrl": hero_image.asset->url    },    services[]{      title,      body,      "imageUrl": image.asset->url    },    "trustedBy": {      "show": show_trusted_by,      "companies": trusted_by->companies[]{        name,        "logoUrl": image.asset->url      }    },    "cta": {      "heading": cta_heading,      "body": cta_body,      "buttonText": cta_button_text,      "buttonLink": cta_button_link}  }
+// Query: *[_type == "services"][0] {    "whyWorkWithMe": {      "heading": why_work_with_me.heading,      "body": why_work_with_me.body    },    "hero": {      heading,      subheading,      "imageUrl": hero_image.asset->url    },    services[]{      title,      body,      "imageUrl": image.asset->url,      "cta": cta_text,      "ctaUrl": cta_link    },    "trustedBy": {      "show": show_trusted_by,      "companies": trusted_by->companies[]{        name,        "logoUrl": image.asset->url      }    },    "cta": {      "heading": cta_heading,      "body": cta_body,      "buttonText": cta_button_text,      "buttonLink": cta_button_link    }  }
 export type SERVICES_QUERY_RESULT = {
+  whyWorkWithMe: {
+    heading: null;
+    body: null;
+  };
   hero: {
-    heading: string | null;
-    subheading: string | null;
+    heading: string;
+    subheading: string;
     imageUrl: string | null;
   };
   services: Array<{
-    title: string | null;
+    title: string;
     body: Array<{
       children?: Array<{
         marks?: Array<string>;
@@ -636,19 +657,21 @@ export type SERVICES_QUERY_RESULT = {
       _key: string;
     }> | null;
     imageUrl: string | null;
+    cta: string | null;
+    ctaUrl: string | null;
   }> | null;
   trustedBy: {
     show: boolean | null;
     companies: Array<{
-      name: string | null;
+      name: string;
       logoUrl: string | null;
     }> | null;
   };
   cta: {
-    heading: null;
-    body: null;
-    buttonText: null;
-    buttonLink: null;
+    heading: string;
+    body: string;
+    buttonText: string;
+    buttonLink: string;
   };
 } | null;
 
@@ -658,8 +681,8 @@ export type SERVICES_QUERY_RESULT = {
 export type LINKS_QUERY_RESULT = {
   profilePhoto: string | null;
   links: Array<{
-    title: string | null;
-    url: string | null;
+    title: string;
+    url: string;
     imageUrl: string | null;
   }> | null;
 } | null;
@@ -670,7 +693,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "homepage"][0] {\n    "hero": {\n      "heading": hero_heading,\n      "subheading": hero_subheading,\n      "imageUrl": hero_image.asset->url,\n      "cta": hero_cta,\n      "ctaUrl": hero_cta_link\n    },\n\n    "wbh": {\n      "show": show_WBH_hero,\n      "subheading": WBH_subheading,\n      "cta": WBH_CTA,\n      "ctaUrl": WBH_CTA_link\n    },\n\n    "bio": {\n      "snippet": bio_snippet,\n      "cta": bio_CTA,\n      "imageUrl": bio_image.asset->url\n    },\n\n    "testimonials": testimonials[]{quote, person},\n\n    "collabs": {\n      "heading": collab_heading,\n  \n      "collaborations": collaborations[]{\n        title,\n        subtitle,\n        url,\n        "imageUrl": image.asset->url,\n        platform\n      }\n    },\n\n    "services": services[]{\n      title,\n      body,\n      cta,\n      "ctaUrl": cta_link,\n      "imageUrl": image.asset->url\n    },\n\n    "contact": {\n      "heading": contact_heading,\n      "body": contact_body,\n      "cta": contact_cta_text,\n      "ctaUrl": contact_cta_link,\n      "imageUrl": contact_image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    }\n  }': HOMEPAGE_QUERY_RESULT;
     '*[_type == "bio"][0] {\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    letter,\n\n    quote,\n\n    "proBio": {\n      "heading": bio_heading,\n      "body": pro_bio\n    },\n\n    "certs": {\n      "heading": certs_heading,\n      "preText": certs_pre,\n      certifications[]{title, description},\n      "postText": certs_post\n    }\n  }': BIO_QUERY_RESULT;
-    '*[_type == "services"][0] {\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    services[]{\n      title,\n      body,\n      "imageUrl": image.asset->url\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    },\n\n    "cta": {\n      "heading": cta_heading,\n      "body": cta_body,\n      "buttonText": cta_button_text,\n      "buttonLink": cta_button_link\n}\n  }': SERVICES_QUERY_RESULT;
+    '*[_type == "services"][0] {\n    "whyWorkWithMe": {\n      "heading": why_work_with_me.heading,\n      "body": why_work_with_me.body\n    },\n\n    "hero": {\n      heading,\n      subheading,\n      "imageUrl": hero_image.asset->url\n    },\n\n    services[]{\n      title,\n      body,\n      "imageUrl": image.asset->url,\n      "cta": cta_text,\n      "ctaUrl": cta_link\n    },\n\n    "trustedBy": {\n      "show": show_trusted_by,\n      "companies": trusted_by->companies[]{\n        name,\n        "logoUrl": image.asset->url\n      }\n    },\n\n    "cta": {\n      "heading": cta_heading,\n      "body": cta_body,\n      "buttonText": cta_button_text,\n      "buttonLink": cta_button_link\n    }\n  }': SERVICES_QUERY_RESULT;
     '*[_type == "links"][0] {\n    "profilePhoto": profile_photo.asset->url,\n\n    "links": other_links[]{\n      title,\n      url,\n      "imageUrl": image.asset->url\n    }\n  }': LINKS_QUERY_RESULT;
   }
 }

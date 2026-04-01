@@ -35,8 +35,19 @@
 }
 
 /* -------------------
+-- WHY WORK WITH ME --
+------------------- */
+.whyWorkWithMeSection {
+  max-width: 800px;
+}
+
+/* -------------------
 ----- SERVICES -------
 ------------------- */
+.servicesWrapper {
+  padding-top: 0 !important;
+}
+
 .servicesGrid {
   display: flex;
   flex-direction: column;
@@ -47,6 +58,7 @@
   max-width: 800px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 }
 
