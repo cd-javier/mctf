@@ -64,6 +64,14 @@ p {
   line-height: 150%;
 }
 
+p a {
+  color: var(--accent-main)
+}
+
+p a:hover {
+  color: var(--text-main)
+}
+
 .large-body {
   font-size: 1.25rem;
 }
