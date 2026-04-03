@@ -91,9 +91,9 @@ function ServicesSection({ data }: { data: ServicesData }) {
       flex
     >
       <div className={styles.servicesGrid}>
-        {data.map((service, index) => {
+        {data.map((service) => {
           return (
-            <div key={index} className={styles.service}>
+            <div key={service.title} className={styles.service}>
               <img
                 src={imgUrl(service.imageUrl!)
                   .width(1800)

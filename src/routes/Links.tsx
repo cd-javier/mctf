@@ -35,7 +35,7 @@ export default function Links() {
       </header>
       <main>
         {data.links &&
-          data.links.map((link, index) => <Link data={link} key={index} />)}
+          data.links.map((link) => <Link data={link} key={link.url} />)}
       </main>
     </div>
   );

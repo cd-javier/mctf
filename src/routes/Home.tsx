@@ -209,7 +209,7 @@ function Testimonials({ data }: { data: TestimonialsData }) {
       <div className={styles.dots} role="tablist" aria-label="Testimonials">
         {data!.map((_q, i) => (
           <button
-            key={i}
+            key={_q.person}
             role="tab"
             aria-selected={i === index}
             aria-label={`Testimonial ${i + 1} of ${data!.length}`}
@@ -234,8 +234,8 @@ function Collabs({ data }: { data: CollabsData }) {
     >
       <h2>{data.heading}</h2>
       <div className={styles.collabGrid}>
-        {data.collaborations.map((collab, index) => (
-          <Collab data={collab} key={index} />
+        {data.collaborations.map((collab) => (
+          <Collab data={collab} key={collab.url} />
         ))}
       </div>
     </Section>
@@ -293,9 +293,9 @@ function Services({ data }: { data: ServicesData }) {
     >
       <h2>Services</h2>
       <div className={styles.servicesGrid}>
-        {data.map((service, index) => {
+        {data.map((service) => {
           return (
-            <div className={styles.service} key={index}>
+            <div className={styles.service} key={service.title}>
               <img
                 src={imgUrl(service.imageUrl!).width(900).height(300).url()}
                 alt=""

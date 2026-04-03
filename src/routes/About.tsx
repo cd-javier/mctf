@@ -152,7 +152,7 @@ function CertsAccordion({ certs }: { certs: Certificate[] }) {
     <div className={styles.certsAccordion}>
       {certs.map((cert, index) => (
         <Certificate
-          key={index}
+          key={cert.title}
           index={index}
           cert={cert}
           isOpen={index === openIndex}

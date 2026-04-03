@@ -8,9 +8,9 @@ export default function TrustedByGrid({
 }) {
   return (
     <div className={styles.trustedByGrid}>
-      {companies.map((company, index) => {
+      {companies.map((company) => {
         return (
-          <div className={styles.company} key={index}>
+          <div className={styles.company} key={company.name}>
             <img
               src={imgUrl(company.logoUrl!).width(200).format('webp').url()}
               alt={`${company.name}'s logo`}
