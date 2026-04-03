@@ -229,6 +229,7 @@ function Collabs({ data }: { data: CollabsData }) {
     <Section
       wrapperClassName={styles.collabsWrapper}
       className={styles.collabsSection}
+      anchor='collabs'
       flex
     >
       <h2>{data.heading}</h2>
