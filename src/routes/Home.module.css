@@ -193,24 +193,53 @@
   padding-top: 0 !important;
 }
 
-.collabGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 150px);
-  max-width: 100%;
+.collabCarousel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.collabTrack {
+  display: flex;
   gap: 1rem;
-  justify-content: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.collabTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.collabArrow {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.collabArrow svg {
+  height: 32px;
+  fill: var(--text-main);
+  display: block;
 }
 
 .collab {
+  max-width: 150px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   color: inherit;
   text-decoration: none;
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
 
 .collabTitle {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 

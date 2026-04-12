@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import classNames from 'classnames';
 
 import styles from './Home.module.css';
@@ -225,20 +225,76 @@ function Testimonials({ data }: { data: TestimonialsData }) {
 }
 
 function Collabs({ data }: { data: CollabsData }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateArrows = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 0);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    updateArrows();
+    const el = trackRef.current;
+    el?.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    return () => {
+      el?.removeEventListener('scroll', updateArrows);
+      window.removeEventListener('resize', updateArrows);
+    };
+  }, [updateArrows]);
+
+  const scroll = (dir: 1 | -1) => {
+    trackRef.current?.scrollBy({ left: dir * 166, behavior: 'smooth' });
+  };
+
   if (!data.collaborations || data.collaborations.length < 1) return;
 
   return (
     <Section
       wrapperClassName={styles.collabsWrapper}
       className={styles.collabsSection}
-      anchor='collabs'
+      anchor="collabs"
       flex
     >
       <h2>{data.heading}</h2>
-      <div className={styles.collabGrid}>
-        {data.collaborations.map((collab) => (
-          <Collab data={collab} key={collab.url} />
-        ))}
+      <div className={styles.collabCarousel}>
+        <button
+          className={styles.collabArrow}
+          onClick={() => scroll(-1)}
+          aria-label="Scroll left"
+          style={{ visibility: canScrollLeft ? 'visible' : 'hidden' }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+          </svg>
+        </button>
+        <div className={styles.collabTrack} ref={trackRef}>
+          {data.collaborations.map((collab) => (
+            <Collab data={collab} key={collab.url} />
+          ))}
+        </div>
+        <button
+          className={styles.collabArrow}
+          onClick={() => scroll(1)}
+          aria-label="Scroll right"
+          style={{ visibility: canScrollRight ? 'visible' : 'hidden' }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+          </svg>
+        </button>
       </div>
     </Section>
   );
