@@ -7,7 +7,7 @@ import WBHLogo from './WBHLogo';
 
 import styles from './Navbar.module.css';
 
-const showWBH = true;
+const showWBH = false;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -18,7 +18,9 @@ export default function Navbar() {
 
   return (
     <>
-      {isOpen && <div className={styles.backdrop} onClick={close} aria-hidden="true" />}
+      {isOpen && (
+        <div className={styles.backdrop} onClick={close} aria-hidden="true" />
+      )}
       <header className={styles.navbar}>
         <NavLink to="/" className={styles.logo}>
           Matthew CT Fuller
@@ -47,15 +49,23 @@ export default function Navbar() {
               </svg>
             )}
           </div>
-          <ul className={classNames(styles.navLinks, { [styles.open]: isOpen })}>
+          <ul
+            className={classNames(styles.navLinks, { [styles.open]: isOpen })}
+          >
             <li>
-              <NavLink to={'/'} onClick={close}>Home</NavLink>
+              <NavLink to={'/'} onClick={close}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to={'/about'} onClick={close}>About</NavLink>
+              <NavLink to={'/about'} onClick={close}>
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to={'/services'} onClick={close}>Services</NavLink>
+              <NavLink to={'/services'} onClick={close}>
+                Services
+              </NavLink>
             </li>
             <li>
               <HashLink smooth to={'/#contact'} onClick={close}>
