@@ -6,7 +6,7 @@ import './global.css';
 
 import routes from './routes';
 
-const router = createBrowserRouter(routes, { basename: '/mctf/' });
+const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
