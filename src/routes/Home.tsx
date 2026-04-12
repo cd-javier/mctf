@@ -70,7 +70,9 @@ function Hero({ data }: { data: HeroData }) {
     >
       <div
         className={styles.heroBg}
-        style={{ backgroundImage: `url(${imgUrl(data.imageUrl!).url()})` }}
+        style={{
+          backgroundImage: `url(${imgUrl(data.imageUrl!).dpr(3).url()})`,
+        }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
         {data.heading}
@@ -110,7 +112,7 @@ function Bio({ data }: { data: BioData }) {
     >
       {data.imageUrl && (
         <img
-          src={imgUrl(data.imageUrl).width(900).format('webp').url()}
+          src={imgUrl(data.imageUrl).width(900).format('webp').dpr(3).url()}
           srcSet={sanitySrcSet(data.imageUrl, [900, 1800, 2700])}
           sizes="(min-width: 1024px) 50vw, 100vw"
           alt=""
@@ -262,6 +264,7 @@ function Collab({
               .width(300)
               .height(300)
               .format('webp')
+              .dpr(3)
               .url()}
             className={styles.thumbnail}
             alt={`Thumbnail of ${data.title}`}
@@ -297,7 +300,11 @@ function Services({ data }: { data: ServicesData }) {
           return (
             <div className={styles.service} key={service.title}>
               <img
-                src={imgUrl(service.imageUrl!).width(900).height(300).url()}
+                src={imgUrl(service.imageUrl!)
+                  .width(900)
+                  .height(300)
+                  .dpr(3)
+                  .url()}
                 alt=""
               />
               <div className={styles.content}>
@@ -339,7 +346,7 @@ function Contact({ data }: { data: ContactData }) {
       <h2>{data.heading}</h2>
       <div className={styles.content}>
         <img
-          src={imgUrl(data.imageUrl!).width(900).format('webp').url()}
+          src={imgUrl(data.imageUrl!).width(900).format('webp').dpr(3).url()}
           srcSet={sanitySrcSet(data.imageUrl!, [900, 1800, 2700])}
           sizes="(min-width: 1024px) 50vw, 100vw"
           alt=""

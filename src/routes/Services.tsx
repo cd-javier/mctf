@@ -52,7 +52,7 @@ function Hero({ data }: { data: HeroData }) {
       <div
         className={styles.heroBg}
         style={{
-          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').url()})`,
+          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').dpr(3).url()})`,
         }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
@@ -99,6 +99,7 @@ function ServicesSection({ data }: { data: ServicesData }) {
                   .width(1800)
                   .height(300)
                   .format('webp')
+                  .dpr(3)
                   .url()}
                 alt=""
               />

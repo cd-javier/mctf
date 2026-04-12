@@ -26,6 +26,7 @@ export default function Links() {
             .width(600)
             .height(600)
             .format('webp')
+            .dpr(3)
             .url()}
           alt=""
           className={styles.profilePhoto}
@@ -49,7 +50,12 @@ function Link({ data }: { data: LinkListData[number] }) {
       <a href={url!} target="_blank" rel="noopener noreferrer">
         <div className={styles.link}>
           <img
-            src={imgUrl(imageUrl).height(400).width(1600).format('webp').url()}
+            src={imgUrl(imageUrl)
+              .height(400)
+              .width(1600)
+              .format('webp')
+              .dpr(3)
+              .url()}
             alt=""
           />
 

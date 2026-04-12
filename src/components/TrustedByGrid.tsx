@@ -12,7 +12,7 @@ export default function TrustedByGrid({
         return (
           <div className={styles.company} key={company.name}>
             <img
-              src={imgUrl(company.logoUrl!).width(200).format('webp').url()}
+              src={imgUrl(company.logoUrl!).width(200).format('webp').dpr(3).url()}
               alt={`${company.name}'s logo`}
             />
           </div>

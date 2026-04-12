@@ -10,7 +10,7 @@ export function imgUrl(source: string) {
 export function sanitySrcSet(
   source: string,
   widths: number[],
-  height?: number
+  height?: number,
 ): string {
   return widths
     .map((w) => {

@@ -54,7 +54,7 @@ export function Hero({ data }: { data: HeroData }) {
       <div
         className={styles.heroBg}
         style={{
-          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').url()})`,
+          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').dpr(3).url()})`,
         }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
@@ -83,7 +83,12 @@ function Letter({
     >
       <div className={styles.letterPortrait}>
         <img
-          src={imgUrl(heroImg!).width(900).height(1200).format('webp').url()}
+          src={imgUrl(heroImg!)
+            .width(900)
+            .height(1200)
+            .format('webp')
+            .dpr(3)
+            .url()}
           alt=""
         />
       </div>
@@ -134,7 +139,7 @@ function Certs({ data }: { data: CertsData }) {
       <CertsAccordion certs={data.certifications!} />
       <div className={styles.textBody}>
         <PortableText value={data.postText!} />
-        <br   />
+        <br />
         <Button to="/#contact">Let's Talk</Button>
       </div>
     </Section>
