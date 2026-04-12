@@ -1,5 +1,5 @@
-@import 'modern-normalize';
-@import './fonts.css';
+@import 'modern-normalize/modern-normalize.css';
+@import url('./fonts.css');
 
 :root {
   /* Backgrounds */

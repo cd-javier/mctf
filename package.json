@@ -2,7 +2,7 @@
   "name": "mctf",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://cd-javier.github.io/mctf",
+  "homepage": "https://www.matthewctfuller.com",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
