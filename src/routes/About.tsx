@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import classNames from 'classnames';
 import { PortableText } from '@portabletext/react';
 import { imgUrl } from '../lib/imgUrl';
+import type { SanityImageSource } from '@sanity/image-url';
 
 import { usePageMeta } from '../lib/usePageData';
 import { SEO } from '../lib/SEO';
@@ -15,7 +16,10 @@ import Button from '../components/Button';
 import type { BIO_QUERY_RESULT } from '../lib/sanity.types';
 import { useState } from 'react';
 
-type BioData = NonNullable<BIO_QUERY_RESULT>;
+type _Gen = NonNullable<BIO_QUERY_RESULT>;
+type BioData = Omit<_Gen, 'hero'> & {
+  hero: Omit<_Gen['hero'], 'imageUrl'> & { image: SanityImageSource | null };
+};
 type HeroData = BioData['hero'];
 type LetterData = BioData['letter'];
 type QuoteData = BioData['quote'];
@@ -34,7 +38,7 @@ export default function About() {
     <>
       <DefaultLayout>
         <Hero data={hero} />
-        <Letter data={letter} heroImg={hero.imageUrl} />
+        <Letter data={letter} heroImg={hero.image} />
         <Quote data={quote} />
         <ProBio data={proBio} />
         <Certs data={certs} />
@@ -54,7 +58,7 @@ export function Hero({ data }: { data: HeroData }) {
       <div
         className={styles.heroBg}
         style={{
-          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').dpr(3).url()})`,
+          backgroundImage: `url(${imgUrl(data.image!).format('webp').dpr(3).url()})`,
         }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
@@ -72,7 +76,7 @@ function Letter({
   heroImg,
 }: {
   data: LetterData;
-  heroImg: HeroData['imageUrl'];
+  heroImg: HeroData['image'];
 }) {
   return (
     <Section

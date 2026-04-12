@@ -1,10 +1,11 @@
 import { imgUrl } from "../lib/imgUrl";
+import type { SanityImageSource } from '@sanity/image-url';
 import styles from './TrustedByGrid.module.css'
 
 export default function TrustedByGrid({
   companies,
 }: {
-  companies: { name: string | null; logoUrl: string | null }[];
+  companies: { name: string | null; logo: SanityImageSource | null }[];
 }) {
   return (
     <div className={styles.trustedByGrid}>
@@ -12,7 +13,7 @@ export default function TrustedByGrid({
         return (
           <div className={styles.company} key={company.name}>
             <img
-              src={imgUrl(company.logoUrl!).width(200).format('webp').dpr(3).url()}
+              src={imgUrl(company.logo!).width(200).format('webp').dpr(3).url()}
               alt={`${company.name}'s logo`}
             />
           </div>

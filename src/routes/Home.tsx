@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import styles from './Home.module.css';
 
 import type { HOMEPAGE_QUERY_RESULT } from '../lib/sanity.types';
+import type { SanityImageSource } from '@sanity/image-url';
 import { imgUrl, sanitySrcSet } from '../lib/imgUrl';
 import { usePageMeta } from '../lib/usePageData';
 import { SEO } from '../lib/SEO';
@@ -18,7 +19,25 @@ import mediaPlaceholder from '../assets/media-placeholder.png';
 import SocialLinks from '../components/SocialLinks';
 import TrustedByGrid from '../components/TrustedByGrid';
 
-type HomepageData = NonNullable<HOMEPAGE_QUERY_RESULT>;
+type _Gen = NonNullable<HOMEPAGE_QUERY_RESULT>;
+type HomepageData = Omit<_Gen, 'hero' | 'bio' | 'collabs' | 'services' | 'contact' | 'trustedBy'> & {
+  hero: Omit<_Gen['hero'], 'imageUrl'> & { image: SanityImageSource | null };
+  bio: Omit<_Gen['bio'], 'imageUrl'> & { image: SanityImageSource | null };
+  collabs: Omit<_Gen['collabs'], 'collaborations'> & {
+    collaborations: Array<
+      Omit<NonNullable<_Gen['collabs']['collaborations']>[number], 'imageUrl'> & { image: SanityImageSource | null }
+    > | null;
+  };
+  services: Array<
+    Omit<NonNullable<_Gen['services']>[number], 'imageUrl'> & { image: SanityImageSource | null }
+  > | null;
+  contact: Omit<_Gen['contact'], 'imageUrl'> & { image: SanityImageSource | null };
+  trustedBy: Omit<_Gen['trustedBy'], 'companies'> & {
+    companies: Array<
+      Omit<NonNullable<_Gen['trustedBy']['companies']>[number], 'logoUrl'> & { logo: SanityImageSource | null }
+    > | null;
+  };
+};
 type HeroData = HomepageData['hero'];
 type WBHData = HomepageData['wbh'];
 type BioData = HomepageData['bio'];
@@ -71,7 +90,7 @@ function Hero({ data }: { data: HeroData }) {
       <div
         className={styles.heroBg}
         style={{
-          backgroundImage: `url(${imgUrl(data.imageUrl!).dpr(3).url()})`,
+          backgroundImage: `url(${imgUrl(data.image!).dpr(3).url()})`,
         }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
@@ -110,10 +129,10 @@ function Bio({ data }: { data: BioData }) {
       className={styles.bioSection}
       flex
     >
-      {data.imageUrl && (
+      {data.image && (
         <img
-          src={imgUrl(data.imageUrl).width(900).format('webp').dpr(3).url()}
-          srcSet={sanitySrcSet(data.imageUrl, [900, 1800, 2700])}
+          src={imgUrl(data.image).width(900).format('webp').dpr(3).url()}
+          srcSet={sanitySrcSet(data.image, [900, 1800, 2700])}
           sizes="(min-width: 1024px) 50vw, 100vw"
           alt=""
         />
@@ -314,9 +333,9 @@ function Collab({
       aria-label={`Matthew's collaboration with ${data.title} (opens in a new tab)`}
     >
       <div className={styles.collabImage}>
-        {data.imageUrl ? (
+        {data.image ? (
           <img
-            src={imgUrl(data.imageUrl)
+            src={imgUrl(data.image)
               .width(300)
               .height(300)
               .format('webp')
@@ -356,7 +375,7 @@ function Services({ data }: { data: ServicesData }) {
           return (
             <div className={styles.service} key={service.title}>
               <img
-                src={imgUrl(service.imageUrl!)
+                src={imgUrl(service.image!)
                   .width(900)
                   .height(300)
                   .dpr(3)
@@ -402,8 +421,8 @@ function Contact({ data }: { data: ContactData }) {
       <h2>{data.heading}</h2>
       <div className={styles.content}>
         <img
-          src={imgUrl(data.imageUrl!).width(900).format('webp').dpr(3).url()}
-          srcSet={sanitySrcSet(data.imageUrl!, [900, 1800, 2700])}
+          src={imgUrl(data.image!).width(900).format('webp').dpr(3).url()}
+          srcSet={sanitySrcSet(data.image!, [900, 1800, 2700])}
           sizes="(min-width: 1024px) 50vw, 100vw"
           alt=""
         />

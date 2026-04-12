@@ -1,14 +1,15 @@
 import { createImageUrlBuilder } from '@sanity/image-url';
+import type { SanityImageSource } from '@sanity/image-url';
 import { client } from './client';
 
 const builder = createImageUrlBuilder(client);
 
-export function imgUrl(source: string) {
+export function imgUrl(source: SanityImageSource) {
   return builder.image(source);
 }
 
 export function sanitySrcSet(
-  source: string,
+  source: SanityImageSource,
   widths: number[],
   height?: number,
 ): string {

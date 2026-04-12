@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import styles from './Links.module.css';
 
 import { imgUrl } from '../lib/imgUrl';
+import type { SanityImageSource } from '@sanity/image-url';
 import SocialLinks from '../components/SocialLinks';
 
 import { usePageMeta } from '../lib/usePageData';
@@ -10,7 +11,13 @@ import { SEO } from '../lib/SEO';
 import type { LINKS_QUERY_RESULT } from '../lib/sanity.types';
 import classNames from 'classnames';
 
-type LinksData = NonNullable<LINKS_QUERY_RESULT>;
+type _Gen = NonNullable<LINKS_QUERY_RESULT>;
+type LinksData = Omit<_Gen, 'profilePhoto' | 'links'> & {
+  profilePhoto: SanityImageSource | null;
+  links: Array<
+    Omit<NonNullable<_Gen['links']>[number], 'imageUrl'> & { image: SanityImageSource | null }
+  > | null;
+};
 type LinkListData = NonNullable<LinksData['links']>;
 
 export default function Links() {
@@ -43,14 +50,14 @@ export default function Links() {
 }
 
 function Link({ data }: { data: LinkListData[number] }) {
-  const { title, url, imageUrl } = data;
+  const { title, url, image } = data;
 
-  if (imageUrl)
+  if (image)
     return (
       <a href={url!} target="_blank" rel="noopener noreferrer">
         <div className={styles.link}>
           <img
-            src={imgUrl(imageUrl)
+            src={imgUrl(image)
               .height(400)
               .width(1600)
               .format('webp')

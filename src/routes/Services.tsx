@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { PortableText } from '@portabletext/react';
 import classNames from 'classnames';
 import { imgUrl } from '../lib/imgUrl';
+import type { SanityImageSource } from '@sanity/image-url';
 
 import { usePageMeta } from '../lib/usePageData';
 import { SEO } from '../lib/SEO';
@@ -15,7 +16,18 @@ import type { SERVICES_QUERY_RESULT } from '../lib/sanity.types';
 import TrustedByGrid from '../components/TrustedByGrid';
 import Button from '../components/Button';
 
-type ServicesPageData = NonNullable<SERVICES_QUERY_RESULT>;
+type _Gen = NonNullable<SERVICES_QUERY_RESULT>;
+type ServicesPageData = Omit<_Gen, 'hero' | 'services' | 'trustedBy'> & {
+  hero: Omit<_Gen['hero'], 'imageUrl'> & { image: SanityImageSource | null };
+  services: Array<
+    Omit<NonNullable<_Gen['services']>[number], 'imageUrl'> & { image: SanityImageSource | null }
+  > | null;
+  trustedBy: Omit<_Gen['trustedBy'], 'companies'> & {
+    companies: Array<
+      Omit<NonNullable<_Gen['trustedBy']['companies']>[number], 'logoUrl'> & { logo: SanityImageSource | null }
+    > | null;
+  };
+};
 type HeroData = ServicesPageData['hero'];
 type ServicesData = ServicesPageData['services'];
 type TrustedByData = ServicesPageData['trustedBy'];
@@ -52,7 +64,7 @@ function Hero({ data }: { data: HeroData }) {
       <div
         className={styles.heroBg}
         style={{
-          backgroundImage: `url(${imgUrl(data.imageUrl!).format('webp').dpr(3).url()})`,
+          backgroundImage: `url(${imgUrl(data.image!).format('webp').dpr(3).url()})`,
         }}
       ></div>
       <h1 className={classNames(styles.heading, 'multiline')}>
@@ -95,9 +107,9 @@ function ServicesSection({ data }: { data: ServicesData }) {
           return (
             <div key={service.title} className={styles.service}>
               <img
-                src={imgUrl(service.imageUrl!)
+                src={imgUrl(service.image!)
                   .width(1800)
-                  .height(300)
+                  .height(500)
                   .format('webp')
                   .dpr(3)
                   .url()}

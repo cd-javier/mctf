@@ -7,7 +7,7 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
     "hero": {
       "heading": hero_heading,
       "subheading": hero_subheading,
-      "imageUrl": hero_image.asset->url,
+      "image": hero_image { asset->, hotspot, crop },
       "cta": hero_cta,
       "ctaUrl": hero_cta_link
     },
@@ -22,7 +22,7 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
     "bio": {
       "snippet": bio_snippet,
       "cta": bio_CTA,
-      "imageUrl": bio_image.asset->url
+      "image": bio_image { asset->, hotspot, crop }
     },
 
     "testimonials": testimonials[]{quote, person},
@@ -34,7 +34,7 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
         title,
         subtitle,
         url,
-        "imageUrl": image.asset->url,
+        "image": image { asset->, hotspot, crop },
         platform
       }
     },
@@ -44,7 +44,7 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
       body,
       cta,
       "ctaUrl": cta_link,
-      "imageUrl": image.asset->url
+      "image": image { asset->, hotspot, crop }
     },
 
     "contact": {
@@ -52,14 +52,14 @@ const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0] {
       "body": contact_body,
       "cta": contact_cta_text,
       "ctaUrl": contact_cta_link,
-      "imageUrl": contact_image.asset->url
+      "image": contact_image { asset->, hotspot, crop }
     },
 
     "trustedBy": {
       "show": show_trusted_by,
       "companies": trusted_by->companies[]{
         name,
-        "logoUrl": image.asset->url
+        "logo": image { asset->, hotspot, crop }
       }
     }
   }`);
@@ -68,7 +68,7 @@ const BIO_QUERY = defineQuery(`*[_type == "bio"][0] {
     "hero": {
       heading,
       subheading,
-      "imageUrl": hero_image.asset->url
+      "image": hero_image { asset->, hotspot, crop }
     },
 
     letter,
@@ -97,13 +97,13 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
     "hero": {
       heading,
       subheading,
-      "imageUrl": hero_image.asset->url
+      "image": hero_image { asset->, hotspot, crop }
     },
 
     services[]{
       title,
       body,
-      "imageUrl": image.asset->url,
+      "image": image { asset->, hotspot, crop },
       "cta": cta_text,
       "ctaUrl": cta_link
     },
@@ -112,7 +112,7 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
       "show": show_trusted_by,
       "companies": trusted_by->companies[]{
         name,
-        "logoUrl": image.asset->url
+        "logo": image { asset->, hotspot, crop }
       }
     },
 
@@ -125,12 +125,12 @@ const SERVICES_QUERY = defineQuery(`*[_type == "services"][0] {
   }`);
 
 const LINKS_QUERY = defineQuery(`*[_type == "links"][0] {
-    "profilePhoto": profile_photo.asset->url,
+    "profilePhoto": profile_photo { asset->, hotspot, crop },
 
     "links": other_links[]{
       title,
       url,
-      "imageUrl": image.asset->url
+      "image": image { asset->, hotspot, crop }
     }
   }`);
 
