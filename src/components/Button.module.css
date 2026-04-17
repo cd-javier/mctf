@@ -4,6 +4,10 @@
   border-radius: 4px;
 }
 
+.button:hover {
+  opacity: 0.8;
+}
+
 .light {
   background-color: var(--text-main);
   color: var(--bg-main);
